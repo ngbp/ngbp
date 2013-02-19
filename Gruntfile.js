@@ -249,7 +249,7 @@ module.exports = function ( grunt ) {
        */
       gruntfile: {
         files: 'Gruntfile.js',
-        tasks: [ 'jshint:gruntfile' ]
+        tasks: [ 'jshint:gruntfile', 'timestamp' ]
       },
 
       /**
@@ -261,11 +261,25 @@ module.exports = function ( grunt ) {
           '<%= src.js %>', 
           '<%= src.atpl %>', 
           '<%= src.ctpl %>', 
-          '<%= src.html %>', 
-          'src/**/*.less', 
           'src/assets/**/*'
         ],
         tasks: [ 'quick-build', 'timestamp' ]
+      },
+
+      /**
+       * When index.html changes, we need to compile just it.
+       */
+      html: {
+        files: [ '<%= src.html %>' ],
+        tasks: [ 'index', 'timestamp' ]
+      },
+
+      /**
+       * When the CSS files change, we need to compile and minify just them.
+       */
+      less: {
+        files: [ 'src/**/*.less' ],
+        tasks: [ 'recess', 'timestamp' ]
       },
 
       /**

@@ -17,20 +17,25 @@
     <script type="text/javascript" src="assets/<%= grunt.config.get('pkg.name') %>.js"></script>
   </head>
   <body>
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="brand">AngularJS Boilerplate</a>
-
-          <ul class="nav">
-            <li ng-class="{ active: isCurrentUrl('/home') }"><a href="#/home">Home</a></li>
-            <li ng-class="{ active: isCurrentUrl('/about') }"><a href="#/about">About</a></li>
-          </ul>
-        </div>
+    <div class="container">
+      <div class="masthead">
+        <h3 class="muted">AngularJS Bootstrap</h3>
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="container">
+                <ul class="nav">
+                  <li ng-class="{ active: isCurrentUrl('/home') }"><a href="#/home">Home</a></li>
+                  <li ng-class="{ active: isCurrentUrl('/about') }"><a href="#/about">About</a></li>
+                  <li><a target="_new" href="https://github.com/joshdmiller/angular-bootstrap">Github</a></li>
+                  <li><a target="_new" href="https://github.com/joshdmiller/angular-bootstrap/issues">Issues</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
 
-    <div ng-view></div>
+    <div class="container" ng-view></div>
 
   </body>
 </html>

@@ -29,3 +29,42 @@
 @import '../../vendor/twitter-bootstrap/less/navbar.less';
 
 
+/**
+ * Navigation
+ */
+
+.navbar {
+  .navbar-inner {
+    padding: 0;
+  }
+
+  .nav {
+    margin: 0;
+    display: table;
+    width: 100%;
+
+    li {
+      display: table-cell;
+      width: 1%;
+      float: none;
+
+      a {
+        font-weight: bold;
+        text-align: center;
+        border-left: 1px solid rgba(255, 255, 255, 0.75);
+        border-right: 1px solid rgba(0, 0, 0, .1);
+      }
+      
+      &:first-child a {
+        border-left: 0;
+        border-radius: 3px 0 0 3px;
+      }
+      
+      &:last-child a {
+        border-right: 0;
+        border-radius: 3px 0 0 3px;
+      }
+    }
+  }
+}
+
