@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="myApp" ng-controller="AppCtrl">
+  <head>
+    <title>AngularJS Boilerplate</title>
+
+    <!-- your compiles CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/<%= grunt.config.get('pkg.name') %>.css"/>
+
+    <!--[if IE 7>
+    <link rel="stylesheet" href="assets/font-awesome-ie7.min.css>
+    <![endif]-->
+
+    <!-- libs.js contains all of the concatenated third-party libraries -->
+    <script type="text/javascript" src="assets/libs.js"></script>
+
+    <!-- this is your compiled, minified application code -->
+    <script type="text/javascript" src="assets/<%= grunt.config.get('pkg.name') %>.js"></script>
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="brand">AngularJS Boilerplate</a>
+
+          <ul class="nav">
+            <li><a href="#/home">Home</a></li>
+            <li><a href="#/pagetwo">Page 2</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div ng-view></div>
+
+  </body>
+</html>

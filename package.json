@@ -1,0 +1,26 @@
+{
+  "author": "Josh David Miller",
+  "name": "angular-boilerplate",
+  "version": "0.1.0-SNAPSHOT",
+  "homepage": "http://github.com/joshdmiller/angular-boilerplate",
+  "licenses": {
+    "type": "MIT",
+    "url": "https://raw.github.com/joshdmiller/angular-boilerplate/master/LICENSE"
+  },
+  "bugs": "https://github.com/joshdmiller/angular-boilerplate/issues",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:joshdmiller/angular-boilerplate.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-recess": "~0.3.0",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-copy": "~0.4.0",
+    "grunt-contrib-jshint": "~0.1.1",
+    "grunt-contrib-concat": "~0.1.2",
+    "grunt-contrib-watch": "~0.2.0",
+    "grunt-contrib-uglify": "~0.1.1"
+  }
+}
