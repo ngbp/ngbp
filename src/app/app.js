@@ -29,7 +29,14 @@ angular.module( 'myApp', [
  * This is our main application controller. It need not have any logic, but
  * this is a good place for, say, primitive menu logic.
  */
-.controller( 'AppCtrl', [ '$scope', function AppCtrl ( $scope ) {
+.controller( 'AppCtrl', [ '$scope', '$location', function AppCtrl ( $scope, $location ) {
+  $scope.isCurrentUrl = function isCurrentUrl( path ) {
+    if ( $location.path() === path ) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 }])
 
 ;

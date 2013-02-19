@@ -23,8 +23,8 @@
           <a class="brand">AngularJS Boilerplate</a>
 
           <ul class="nav">
-            <li><a href="#/home">Home</a></li>
-            <li><a href="#/pagetwo">Page 2</a></li>
+            <li ng-class="{ active: isCurrentUrl('/home') }"><a href="#/home">Home</a></li>
+            <li ng-class="{ active: isCurrentUrl('/about') }"><a href="#/about">About</a></li>
           </ul>
         </div>
       </div>

@@ -171,11 +171,17 @@ module.exports = function ( grunt ) {
      * with an exclamation point (!).
      */
     jshint: {
-      all: [ 
+      src: [ 
         'Gruntfile.js', 
         '<%= src.js %>', 
         '<%= src.unit %>',
         '!src/components/placeholders/**/*'
+      ],
+      test: [
+        '<%= src.unit %>'
+      ],
+      gruntfile: [
+        'Gruntfile.js'
       ],
       options: {
         curly: true,
@@ -232,18 +238,47 @@ module.exports = function ( grunt ) {
      * the command-line every time we want to see what we're working on; we can
      * instead just leave "grunt watch" running in a background terminal. Set it
      * and forget it, as Ron Popeil used to tell us.
+     *
+     * But we don't need the same thing to happen for all the files. 
      */
     watch: {
-      files: [ 
-        '<%= src.atpl %>', 
-        '<%= src.ctpl %>', 
-        '<%= src.js %>', 
-        '<%= src.html %>', 
-        'src/**/*.less', 
-        '<%= src.unit %>', 
-        'src/assets/**/*'
-      ],
-      tasks: [ 'quick-build', 'timestamp' ]
+      /**
+       * When the Gruntfile changes, we just want to lint it. That said, the
+       * watch will have to be restarted if it should take advantage of any of
+       * the changes.
+       */
+      gruntfile: {
+        files: 'Gruntfile.js',
+        tasks: [ 'jshint:gruntfile' ]
+      },
+
+      /**
+       * When our source files change, we want to run most of our build tasks
+       * (excepting uglification).
+       */
+      src: {
+        files: [ 
+          '<%= src.js %>', 
+          '<%= src.atpl %>', 
+          '<%= src.ctpl %>', 
+          '<%= src.html %>', 
+          'src/**/*.less', 
+          'src/assets/**/*'
+        ],
+        tasks: [ 'quick-build', 'timestamp' ]
+      },
+
+      /**
+       * When a unit test file changes, we only want to linit it and run the
+       * unit tests. However, since the `app` module requires the compiled 
+       * templates, we must also run the `html2js` task.
+       */
+      unittest: {
+        files: [
+          '<%= src.unit %>'
+        ],
+        tasks: [ 'jshint:test', 'html2js', 'test:unit', 'timestamp' ]
+      }
     }
   });
 

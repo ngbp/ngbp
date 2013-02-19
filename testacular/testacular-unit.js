@@ -11,7 +11,8 @@ files = [
   JASMINE_ADAPTER,
   'vendor/angular/angular.js',
   'vendor/angular/angular-mocks.js',
-  'src/**/*.js'
+  'src/**/*.js',
+  'dist/tmp/**/*.js'
 ];
 
 /**
