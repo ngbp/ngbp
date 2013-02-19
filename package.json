@@ -2,7 +2,7 @@
   "author": "Josh David Miller",
   "name": "angular-boilerplate",
   "version": "0.1.0-SNAPSHOT",
-  "homepage": "http://github.com/joshdmiller/angular-boilerplate",
+  "homepage": "http://joshdmiller.github.com/angular-boilerplate",
   "licenses": {
     "type": "MIT",
     "url": "https://raw.github.com/joshdmiller/angular-boilerplate/master/LICENSE"

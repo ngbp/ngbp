@@ -59,9 +59,10 @@ module.exports = function ( grunt ) {
      * `less` is our main stylesheet.
      */
     src: {
-      js: [ 'src/**/*.js', '!src/**/*.spec.js', '<%= distdir %>/tmp/**/*.js' ],
+      js: [ 'src/**/*.js', '!src/**/*.spec.js' ], 
       atpl: [ 'src/app/**/*.tpl.html' ],
       ctpl: [ 'src/components/**/*.tpl.html' ],
+      tpljs: [ '<%= distdir %>/tmp/**/*.js' ],
       html: [ 'src/index.html' ],
       less: 'src/less/main.less',
       unit: [ 'src/**/*.spec.js' ]
@@ -111,7 +112,7 @@ module.exports = function ( grunt ) {
         options: {
           banner: '<%= meta.banner %>'
         },
-        src: [ 'module.prefix', '<%= src.js %>', 'module.suffix' ],
+        src: [ 'module.prefix', '<%= src.js %>', '<%= src.tpljs %>', 'module.suffix' ],
         dest: '<%= distdir %>/assets/<%= pkg.name %>.js'
       },
 
@@ -174,6 +175,7 @@ module.exports = function ( grunt ) {
       src: [ 
         'Gruntfile.js', 
         '<%= src.js %>', 
+        '<%= src.tpljs %>',
         '<%= src.unit %>',
         '!src/components/placeholders/**/*'
       ],
@@ -241,7 +243,7 @@ module.exports = function ( grunt ) {
      *
      * But we don't need the same thing to happen for all the files. 
      */
-    watch: {
+    delta: {
       /**
        * When the Gruntfile changes, we just want to lint it. That said, the
        * watch will have to be restarted if it should take advantage of any of
@@ -249,7 +251,7 @@ module.exports = function ( grunt ) {
        */
       gruntfile: {
         files: 'Gruntfile.js',
-        tasks: [ 'jshint:gruntfile', 'timestamp' ]
+        tasks: [ 'jshint:gruntfile' ]
       },
 
       /**
@@ -258,12 +260,20 @@ module.exports = function ( grunt ) {
        */
       src: {
         files: [ 
-          '<%= src.js %>', 
-          '<%= src.atpl %>', 
-          '<%= src.ctpl %>', 
+          '<%= src.js %>'
+        ],
+        tasks: [ 'jshint:src', 'test:unit', 'concat:dist' ]
+      },
+
+      /**
+       * When assets are changed, copy them. Note that this will *not* copy new
+       * files, so this is probably not very useful.
+       */
+      assets: {
+        files: [ 
           'src/assets/**/*'
         ],
-        tasks: [ 'quick-build', 'timestamp' ]
+        tasks: [ 'copy' ]
       },
 
       /**
@@ -271,7 +281,18 @@ module.exports = function ( grunt ) {
        */
       html: {
         files: [ '<%= src.html %>' ],
-        tasks: [ 'index', 'timestamp' ]
+        tasks: [ 'index' ]
+      },
+
+      /**
+       * When our templates change, we only add them to the template cache.
+       */
+      tpls: {
+        files: [ 
+          '<%= src.atpl %>', 
+          '<%= src.ctpl %>'
+        ],
+        tasks: [ 'html2js', 'concat:dist' ]
       },
 
       /**
@@ -279,7 +300,7 @@ module.exports = function ( grunt ) {
        */
       less: {
         files: [ 'src/**/*.less' ],
-        tasks: [ 'recess', 'timestamp' ]
+        tasks: [ 'recess' ]
       },
 
       /**
@@ -291,10 +312,20 @@ module.exports = function ( grunt ) {
         files: [
           '<%= src.unit %>'
         ],
-        tasks: [ 'jshint:test', 'html2js', 'test:unit', 'timestamp' ]
+        tasks: [ 'jshint:test', 'html2js', 'test:unit' ]
       }
     }
   });
+
+  /**
+   * In order to make it safe to just compile or copy *only* what was changed,
+   * we need to ensure we are starting from a clean, fresh build. So we rename
+   * the `watch` task to `delta` (that's why the configuration var above is
+   * `delta`) and then add a new task called `watch` that does a clean build
+   * before watching for changes.
+   */
+  grunt.renameTask( 'watch', 'delta' );
+  grunt.registerTask( 'watch', [ 'default', 'delta' ] );
 
   /**
    * The default task is to build.
@@ -316,11 +347,4 @@ module.exports = function ( grunt ) {
     grunt.file.copy('src/index.html', 'dist/index.html', { process: grunt.template.process });
   });
 
-  /**
-   * Print a timestamp (useful for when watching).
-   */
-  grunt.registerTask( 'timestamp', function() {
-    grunt.log.subhead(Date());
-  });
-  
 };
