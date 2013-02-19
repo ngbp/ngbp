@@ -28,6 +28,17 @@
 
 @import 'font-awesome.less';
 
+/**
+ * Page Font
+ */
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto Regular'), local('Roboto-Regular'), url(fonts/Roboto-Regular.woff) format('woff');
+}
+
 
 /**
  * This is our main variables file. It in turn imports the `variables` file from
@@ -72,6 +83,45 @@
       &:last-child a {
         border-right: 0;
         border-radius: 3px 0 0 3px;
+      }
+    }
+  }
+}
+
+
+/**
+ * Footer
+ */
+
+.footer {
+  margin-top: 80px;
+
+  .footer-inner {
+    padding: 40px 0;
+    border-top: 1px solid #DDD;
+  }
+
+  a {
+    color: @linkColorHover;
+
+    &:hover {
+      color: @linkColor;
+    }
+  }
+
+  .social {
+    float: right;
+    margin: 0;
+    list-style: none;
+
+    li {
+      float: left;
+      margin-right: 20px;
+
+      a {
+        text-decoration: none;
+        font-size: 40px;
+        .transition( 250ms ease-in-out );
       }
     }
   }
