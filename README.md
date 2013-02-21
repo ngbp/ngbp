@@ -2,5 +2,5 @@
 
 ***
 
-[![Build Status](https://secure.travis-ci.org/joshdmiller/ng-boilerplate.png)](http://travis-ci.org/joshdmiller/ng-boilerplate)
+[![Build Status](https://travis-ci.org/joshdmiller/ng-boilerplate.png?branch=master)](https://travis-ci.org/joshdmiller/ng-boilerplate)
 

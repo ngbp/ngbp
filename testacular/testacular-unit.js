@@ -45,6 +45,6 @@ autoWatch = false;
  * here, e.g. 'firefox', 'chrome', 'chromium'.
  */
 browsers = [
-  'Chrome'
+  'firefox'
 ];
 
