@@ -44,5 +44,7 @@ autoWatch = false;
  * tests to work. You can also just add the executable name of your browser(s)
  * here, e.g. 'firefox', 'chrome', 'chromium'.
  */
-browsers = [];
+browsers = [
+  'Chrome'
+];
 
