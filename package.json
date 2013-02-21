@@ -1,16 +1,16 @@
 {
   "author": "Josh David Miller",
-  "name": "angular-boilerplate",
+  "name": "ng-boilerplate",
   "version": "0.1.0-SNAPSHOT",
-  "homepage": "http://joshdmiller.github.com/angular-boilerplate",
+  "homepage": "http://bit.ly/ng-boilerplate",
   "licenses": {
     "type": "MIT",
-    "url": "https://raw.github.com/joshdmiller/angular-boilerplate/master/LICENSE"
+    "url": "https://raw.github.com/joshdmiller/ng-boilerplate/master/LICENSE"
   },
-  "bugs": "https://github.com/joshdmiller/angular-boilerplate/issues",
+  "bugs": "https://github.com/joshdmiller/ng-boilerplate/issues",
   "repository": {
     "type": "git",
-    "url": "git@github.com:joshdmiller/angular-boilerplate.git"
+    "url": "git@github.com:joshdmiller/ng-boilerplate.git"
   },
   "dependencies": {},
   "devDependencies": {

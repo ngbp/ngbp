@@ -1,0 +1,222 @@
+<div class="row-fluid">
+  <h1 class="page-header">
+    The Elevator Pitch
+    <small>For the lazy and impatient.</small>
+  </h1>
+  <p>
+    <code>ng-boilerplate</code> is an opinionated kickstarter for web
+    development projects. It's an attempt to create a simple starter for new
+    web sites and apps: just download it and start coding. The goal is to
+    have everything you need to get started out of the box; of course it has
+    slick styles and icons, but it also has a best practice directory structure
+    to ensure maximum code reuse. And it's all tied together with a robust
+    build system chock-full of some time-saving goodness.
+  </p>
+
+  <h2>Why?</h2>
+
+  <p>
+    Because my team and I make web apps, and 
+    last year AngularJS became our client-side framework of choice. We start
+    websites the same way every time: create a directory structure, copy and
+    ever-so-slightly tweak some config files from an older project, and yada
+    yada, etc., and so on and so forth. Why are we repeating ourselves? We wanted a starting point; a set of
+    best practices that we could identify our projects as embodying and a set of
+    time-saving wonderfulness, because time is money.
+  </p>
+
+  <p>
+    There are other similar projects out there, but none of them suited our
+    needs. Some are awesome but were just too much, existing more as reference
+    implementations, when we really just wanted a kickstarter. Others were just
+    too little, with puny build systems and unscalable architectures.  So we
+    designed <code>ng-boilerplate</code> to be just right.
+  </p>
+
+  <h2>What ng-boilerplate Is Not</h2>
+
+  <p>
+    This is not an example of an AngularJS app. This is a kickstarter. If
+    you're looking for an example of what a complete, non-trivial AngularJS app
+    that does something real looks like, complete with a REST backend and
+    authentication and authorization, then take a look at <code><a
+        href="https://github.com/angular-app/angular-app/">angular-app</a></code>, 
+    which does just that, and does it well.
+  </p>
+
+  <h1 class="page-header">
+    So What's Included?
+    <small>I'll try to be more specific than "awesomeness".</small>
+  </h1>
+  <p>
+    This section is just a quick introduction to all the junk that comes
+    pre-packaged with <code>ng-boilerplate</code>. For information on how to
+    use it, see the <a
+      href="https://github.com/joshdmiller/ng-boilerplate#readme">project page</a> at
+    GitHub.
+  </p>
+
+  <p>
+    The high-altitude view is that the base project includes 
+    <a href="http://getbootstrap.com">Twitter Bootstrap</a>
+    styles to quickly produce slick-looking responsive web sites and apps. It also
+    includes <a href="http://angular-ui.github.com/bootstrap">UI Bootstrap</a>,
+    a collection of native AngularJS directives based on the aforementioned
+    templates and styles. It also includes <a href="http://fortawesome.github.com/Font-Awesome/">Font Awesome</a>,
+    a wicked-cool collection of font-based icons that work swimmingly with all
+    manner of web projects; in fact, all images on the site are actually font-
+    based icons from Font Awesome. Neat!
+  </p>
+
+  <p>
+    And everything just works (assuming there were no breaking changes in the
+    latest release of Bootstrap). Boom. Like that.
+  </p>
+
+  <p>
+    And, of course, <code>ng-boilerplate</code> is built on <a href="http://angularjs.org">AngularJS</a>,
+    by the far the best JavaScript framework out there! But if you don't know
+    that already, then how did you get here? Well, no matter - just drink the
+    Kool Aid. Do it. You know you want to.
+  </p>
+  
+  <h2>Twitter Bootstrap</h2>
+
+  <p>
+    You already know about this, right? If not, <a
+      href="http://getbootstrap.com">hop on over</a> and check it out; it's
+    pretty sweet. Anyway, all that wonderful stylistic goodness comes built in.
+    The LESS files are available for you to import in your main stylesheet as
+    needed - no excess, no waste. There is also a dedicated place to override
+    variables and mixins to suit your specific needs, so updating to the latest
+    version of Bootstrap is as simple as: 
+  </p>
+
+  <pre>$ cd vendor/twitter-bootstrap<br />$ git pull origin master</pre>
+
+  <p>
+    Boom! And victory is ours.
+  </p>
+
+  <h2>UI Bootstrap</h2>
+
+  <p>
+    What's better than Bootstrap styles? Bootstrap directives!  The fantastic <a href="http://angular-ui.github.com/bootstrap">UI Bootstrap</a>
+    library contains a set of native AngularJS directives that are endlessly
+    extensible. You get the tabs, the tooltips, the accordions. You get your
+    carousel, your modals, your pagination. And <i>more</i>.
+    How about a quick demo? 
+  </p>
+
+  <ul>
+    <li class="dropdown">
+      <a class="btn dropdown-toggle">
+        Click me!
+      </a>
+      <ul class="dropdown-menu">
+        <li ng-repeat="choice in dropdownDemoItems">
+          <a>{{choice}}</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <p>
+    Oh, and don't include jQuery;  
+    you don't need it.
+    This is better.
+    Don't be one of those people. <sup>*</sup>
+  </p>
+
+  <p><small><sup>*</sup> Yes, there are exceptions.</small></p>
+
+  <h2>Font Awesome</h2>
+
+  <p>
+    Font Awesome has earned its label. It's a set of open (!) icons that come
+    distributed as a font (!) for super-easy, lightweight use. Font Awesome 
+    works really well with Twitter Bootstrap, and so fits right in here.
+  </p>
+
+  <p>
+    There is not a single image on this site. All of the little images and icons 
+    are drawn through Font Awesome! All it takes is a little class:
+  </p>
+
+  <pre>&lt;i class="icon-flag"&gt;&lt/i&gt</pre>
+
+  <p>
+    And you get one of these: <i class="icon-flag"> </i>. Neat!
+  </p>
+
+  <h1 class="page-header">
+    The Roadmap
+    <small>Really? What more could you want?</small>
+  </h1>
+
+  <p>
+    This is a project that is <i>not</i> broad in scope, so there's not really
+    much of a wish list here. But I would like to see a couple of things:
+  </p>
+
+  <p>
+    I'd like it to be a little simpler. I want this to be a universal starting
+    point. If someone is starting a new AngularJS project, she should be able to
+    clone, merge, or download its source and immediately start doing what she
+    needs without renaming a bunch of files and methods or deleting spare parts
+    ... like this page. This works for a first release, but I just think there
+    is a little too much here right now.
+  </p>
+
+  <p>
+    I'd also like to see a simple generator. Nothing like <a href="yeoman.io">
+    Yeoman</a>, as there already is one of those, but just something that
+    says "I want Bootstrap but not Font Awesome and my app is called 'coolApp'.
+    Gimme." Perhaps a custom download builder like UI Bootstrap
+    has. Like that. Then again, perhaps some Yeoman generators wouldn't be out
+    of line. I don't know. What do you think?
+  </p>
+
+  <p>
+    Naturally, I am open to all manner of ideas and suggestions. See the "Can I
+    Help?" section below.
+  </p>
+
+  <h2>The Tactical To Do List</h2>
+
+  <p>
+    There isn't much of a demonstration of UI Bootstrap. I don't want to pollute
+    the code with a demo for demo's sake, but I feel we should showcase it in
+    <i>some</i> way.
+  </p>
+
+  <p>
+    <code>ng-boilerplate</code> should include end-to-end tests. This should
+    happen soon. I just haven't had the time.
+  </p>
+
+  <p>
+    Lastly, this site should be prettier, but I'm no web designer. Throw me a
+    bone here, people!
+  </p>
+
+  <h2>Can I Help?</h2>
+
+  <p>
+    Yes, please!
+  </p>
+
+  <p>
+    This is an opinionated kickstarter, but the opinions are fluid and
+    evidence-based. Don't like the way I did something? Think you know of a
+    better way? Have an idea to make this more useful? Let me know! You can
+    contact me through all the usual channels or you can open an issue on the
+    GitHub page. If you're feeling ambitious, you can even submit a pull
+    request - how thoughtful of you!
+  </p>
+
+  <p>
+    So join the team! We're good people.
+  </p>
+</div>
+

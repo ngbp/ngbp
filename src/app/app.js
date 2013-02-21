@@ -8,10 +8,11 @@
  * to place templates in the cache so they do not have to be downloaded and are
  * just part of the initial JS payload.
  */
-angular.module( 'myApp', [
+angular.module( 'ngBoilerplate', [
   'app-templates',
   'component-templates',
-  'myApp.home'
+  'ngBoilerplate.home',
+  'ngBoilerplate.about'
 ])
 
 /**

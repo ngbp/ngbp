@@ -1,7 +1,7 @@
 /**
  * Each section of the site has its own module. It probably also has
- * submodules, though this boilerplate is too simple to demonstrate it. Within
- * `src/app/home`, however, could exist several additional folders representing
+ * submodules, though this boilerplate is too simple to aboutnstrate it. Within
+ * `src/app/about`, however, could exist several additional folders representing
  * additional modules that would then be listed as dependencies of this one.
  * For example, a `note` section could have the submodules `note.create`,
  * `note.delete`, `note.edit`, etc.
@@ -12,8 +12,9 @@
  * The dependencies block here is also where component dependencies should be
  * specified, as shown below.
  */
-angular.module( 'ngBoilerplate.home', [
-  'placeholders'
+angular.module( 'ngBoilerplate.about', [
+  'placeholders',
+  'ui.bootstrap'
 ])
 
 /**
@@ -22,18 +23,22 @@ angular.module( 'ngBoilerplate.home', [
  * this way makes each module more "self-contained".
  */
 .config([ '$routeProvider', function config( $routeProvider ) {
-  $routeProvider.when( '/home', {
-    controller: 'HomeCtrl',
-    templateUrl: 'home/home.tpl.html'
+  $routeProvider.when( '/about', {
+    controller: 'AboutCtrl',
+    templateUrl: 'about/about.tpl.html'
   });
 }])
 
 /**
  * And of course we define a controller for our route.
  */
-.controller( 'HomeCtrl', [ '$scope', function HomeController( $scope ) {
-  // do something here
+.controller( 'AboutCtrl', [ '$scope', function AboutCtrl( $scope ) {
+  // This is simple a demo for UI Boostrap.
+  $scope.dropdownDemoItems = [
+    "The first choice!",
+    "And another choice for you.",
+    "but wait! A third!"
+  ];
 }])
 
 ;
-

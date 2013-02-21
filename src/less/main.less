@@ -20,6 +20,8 @@
 @import '../../vendor/twitter-bootstrap/less/navs.less';
 @import '../../vendor/twitter-bootstrap/less/navbar.less';
 @import '../../vendor/twitter-bootstrap/less/buttons.less';
+@import '../../vendor/twitter-bootstrap/less/button-groups.less';
+@import '../../vendor/twitter-bootstrap/less/dropdowns.less';
 
 
 /**
@@ -29,7 +31,16 @@
 @import 'font-awesome.less';
 
 /**
- * Page Font
+ * This is our main variables file. It in turn imports the `variables` file from
+ * Twitter Bootstrap. We must include it last so we can overwrite any variable
+ * definitions in our imported stylesheets.
+ */
+
+@import 'variables.less';
+
+
+/**
+ * Typography
  */
 
 @font-face {
@@ -39,14 +50,33 @@
   src: local('Roboto Regular'), local('Roboto-Regular'), url(fonts/Roboto-Regular.woff) format('woff');
 }
 
+code, pre {
+  background-color: #EFEFEF;
+  border: 1px solid #DADADA;
+  .border-radius(3px);
+}
 
-/**
- * This is our main variables file. It in turn imports the `variables` file from
- * Twitter Bootstrap. We must include it last so we can overwrite any variable
- * definitions in our imported stylesheets.
- */
+code {
+  padding: 0 3px;
+}
 
-@import 'variables.less';
+pre {
+  margin: 10px 0;
+  padding: 5px;
+}
+
+.page-header {
+  margin-top: 60px;
+
+  &:first-child {
+    margin-top: 20px;
+  }
+}
+
+h2 {
+  margin: 20px 0;
+  color: #666;
+}
 
 
 /**
@@ -71,7 +101,7 @@
       a {
         font-weight: bold;
         text-align: center;
-        border-left: 1px solid rgba(255, 255, 255, 0.75);
+        //border-left: 1px solid rgba(255, 255, 255, 0.75);
         border-right: 1px solid rgba(0, 0, 0, .1);
       }
       
@@ -101,14 +131,6 @@
     border-top: 1px solid #DDD;
   }
 
-  a {
-    color: @linkColorHover;
-
-    &:hover {
-      color: @linkColor;
-    }
-  }
-
   .social {
     float: right;
     margin: 0;
@@ -116,12 +138,17 @@
 
     li {
       float: left;
-      margin-right: 20px;
+      margin-left: 20px;
 
-      a {
+      a, a:visited {
+        color: @grayLight;
         text-decoration: none;
         font-size: 40px;
         .transition( 250ms ease-in-out );
+
+        &:hover {
+          color: @gray;
+        }
       }
     }
   }
