@@ -12,7 +12,8 @@ angular.module( 'ngBoilerplate', [
   'app-templates',
   'component-templates',
   'ngBoilerplate.home',
-  'ngBoilerplate.about'
+  'ngBoilerplate.about',
+  'activeIfCurrent'
 ])
 
 /**
