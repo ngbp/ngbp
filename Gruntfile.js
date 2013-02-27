@@ -312,7 +312,7 @@ module.exports = function ( grunt ) {
         files: [
           '<%= src.unit %>'
         ],
-        tasks: [ 'jshint:test', 'html2js', 'test:unit' ]
+        tasks: [ 'jshint:test', 'test:unit' ]
       }
     }
   });
