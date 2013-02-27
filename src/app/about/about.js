@@ -14,7 +14,8 @@
  */
 angular.module( 'ngBoilerplate.about', [
   'placeholders',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'titleService'
 ])
 
 /**
@@ -32,7 +33,9 @@ angular.module( 'ngBoilerplate.about', [
 /**
  * And of course we define a controller for our route.
  */
-.controller( 'AboutCtrl', [ '$scope', function AboutCtrl( $scope ) {
+.controller( 'AboutCtrl', [ '$scope', 'titleService', function AboutCtrl( $scope, titleService ) {
+  titleService.setTitle( 'What is It?' );
+  
   // This is simple a demo for UI Boostrap.
   $scope.dropdownDemoItems = [
     "The first choice!",

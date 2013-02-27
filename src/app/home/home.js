@@ -13,7 +13,8 @@
  * specified, as shown below.
  */
 angular.module( 'ngBoilerplate.home', [
-  'placeholders'
+  'placeholders',
+  'titleService'
 ])
 
 /**
@@ -31,8 +32,8 @@ angular.module( 'ngBoilerplate.home', [
 /**
  * And of course we define a controller for our route.
  */
-.controller( 'HomeCtrl', [ '$scope', function HomeController( $scope ) {
-  // do something here
+.controller( 'HomeCtrl', [ '$scope', 'titleService', function HomeController( $scope, titleService ) {
+  titleService.setTitle( 'Home' );
 }])
 
 ;
