@@ -65,7 +65,10 @@
     templates and styles. It also includes <a href="http://fortawesome.github.com/Font-Awesome/">Font Awesome</a>,
     a wicked-cool collection of font-based icons that work swimmingly with all
     manner of web projects; in fact, all images on the site are actually font-
-    based icons from Font Awesome. Neat!
+    based icons from Font Awesome. Neat! Lastly, this also includes
+    <a href="http://joshdmiller.github.com/angular-placeholders">Angular Placeholders</a>,
+    a set of pure AngularJS directives to do client-side placeholder images and
+    text to make mocking user interfaces super easy.
   </p>
 
   <p>
@@ -147,6 +150,52 @@
 
   <p>
     And you get one of these: <i class="icon-flag"> </i>. Neat!
+  </p>
+
+  <h2>Placeholders</h2>
+
+  <p>
+    Angular Placeholders is a simple library for mocking up text and images. You
+    can automatically throw around some "lorem ipsum" text:
+  </p>
+
+  <pre>&lt;p ph-txt="3s"&gt;&lt;/p&gt;</pre>
+
+  <p>
+    Which gives you this:
+  </p>
+
+  <div class="pre">
+    &lt;p&gt;
+    <p ph-txt="3s"></p>
+    &lt;/p&gt;
+  </div>
+
+  <p>
+    Even more exciting, you can also create placeholder images, entirely 
+    client-side! For example, this:
+  </p>
+  
+  <pre>
+&lt;img ph-img="50x50" /&gt;<br />
+&lt;img ph-img="50x50" class="img-polaroid" /&gt;<br />
+&lt;img ph-img="50x50" class="img-rounded" /&gt;<br />
+&lt;img ph-img="50x50" class="img-circle" /&gt;
+  </pre>
+
+  <p>
+    Gives you this:
+  </p>
+
+  <div>
+    <img ph-img="50x50" />
+    <img ph-img="50x50" class="img-polaroid" />
+    <img ph-img="50x50" class="img-rounded" />
+    <img ph-img="50x50" class="img-circle" />
+  </div>
+
+  <p>
+    Which is awesome.
   </p>
 
   <h1 class="page-header">
