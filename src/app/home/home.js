@@ -13,7 +13,6 @@
  * specified, as shown below.
  */
 angular.module( 'ngBoilerplate.home', [
-  'placeholders',
   'titleService'
 ])
 
