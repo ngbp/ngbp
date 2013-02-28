@@ -15,13 +15,6 @@ angular.module( 'ngBoilerplate', [
 }])
 
 .controller( 'AppCtrl', [ '$scope', '$location', function AppCtrl ( $scope, $location ) {
-  $scope.isCurrentUrl = function isCurrentUrl( path ) {
-    if ( $location.path() === path ) {
-      return true;
-    } else {
-      return false;
-    }
-  };
 }])
 
 ;
