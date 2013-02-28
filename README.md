@@ -9,7 +9,7 @@ An opinionated kickstarter for [AngularJS](http://angularjs.org) projects.
 Install Node.js and then:
 
 ```sh
-$ git clone git://github.com/joshdmiller/ng-boilerplate
+$ git clone --recursive git://github.com/joshdmiller/ng-boilerplate
 $ cd ng-boilerplate
 $ sudo npm -g install grunt-cli testacular
 $ npm install
@@ -125,7 +125,7 @@ into your existing repository. Assuming you're starting from scratch, simply
 clone this repository using git:
 
 ```sh
-$ git clone git://github.com/joshdmiller/ng-boilerplate my-project-name
+$ git clone --recursive git://github.com/joshdmiller/ng-boilerplate my-project-name
 $ cd my-project-name
 ```
 
