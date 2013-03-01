@@ -95,11 +95,11 @@ What follows is a brief description of each entry, but all directories contain
 their own `README.md` file with additional documentation, so browse around to
 learn more.
 
-- `build/` - custom scripts for Grunt
-- `src/` - our application sources
-- `testacular` - test configuration
+- `build/` - custom scripts for Grunt.
+- `src/` - our application sources. [Read more &raquo;](src/README.md)
+- `testacular` - test configuration.
 - `vendor` - files needed to make everything happen, but *not* libraries our
-  application uses.
+  application uses. [Read more &raquo;](vendor/README.md)
 - `Gruntfile.js` - our build script; see "The Build System" below.
 - `module.prefix` and `module.suffix` - our compiled application script is
   wrapped in these, which by default are used to place the application inside a

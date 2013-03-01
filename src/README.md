@@ -25,11 +25,12 @@ src/
 ```
 
 - `src/app/` - application-specific code, i.e. code not likely to be reused in
-  another application.
-- `src/assets/` - static files like fonts and images.
+  another application. [Read more &raquo;](app/README.md)
+- `src/assets/` - static files like fonts and images. 
+  [Read more &raquo;](assets/README.md)
 - `src/components/` - third-party libraries or components likely to be reused in
-  another application.
-- `src/less/` - LESS CSS files.
+  another application. [Read more &raquo;](components/README.md)
+- `src/less/` - LESS CSS files. [Read more &raquo;](less/README.md)
 - `src/index.html` - this is the HTML document of the single-page application.
   See below.
 
