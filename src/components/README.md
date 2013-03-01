@@ -16,6 +16,7 @@ src/
   |- components/
   |  |- activeIfCurrent/
   |  |- placeholders/
+  |  |- plusOne/
   |  |- titleService/
   |  |- ui-bootstrap/
 ```
@@ -25,6 +26,7 @@ src/
 - `placeholders` - a
   [third-party](http://joshdmiller.github.com/angular-placeholders) component
   to generate placeholder images and "lorem ipsum" text.
+- `plusOne` - a simple directive to load a Google +1 Button on an element.
 - `titleService` - a service to change the page title, complete with a
   consistent suffix.
 - `ui-bootstrap` - the Angular UI Bootstrap project.

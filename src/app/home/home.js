@@ -13,7 +13,8 @@
  * specified, as shown below.
  */
 angular.module( 'ngBoilerplate.home', [
-  'titleService'
+  'titleService',
+  'plusOne'
 ])
 
 /**

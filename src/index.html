@@ -15,6 +15,11 @@
 
     <!-- this is your compiled, minified application code -->
     <script type="text/javascript" src="assets/<%= grunt.config.get('pkg.name') %>.js"></script>
+
+    <!-- it's stupid to have to load it here, but this is for the +1 button -->
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+      { "parsetags": "explicit" }
+    </script>
   </head>
   <body>
     <div class="container">
