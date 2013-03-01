@@ -63,8 +63,19 @@ is where we want to start, which has a defined route for `/home` in
 })
 ```
 
-This is our main application controller. It need not have any logic, but
-this is a good place for logic not specific to the template or route, such as
+One of the components included by default is a basic `titleService` that simply
+allows you to set the page title from any of your controllers. The service accepts
+an optional suffix to be appended to the end of any title set later on, so we set
+this now to ensure it runs before our controllers set titles.
+
+```js
+.run([ 'titleService', function run ( titleService ) {
+  titleService.setSuffix( ' | ngBoilerplate' );
+}])
+```
+
+And then we define our main application controller. It need not have any logic, 
+but this is a good place for logic not specific to the template or route, such as
 menu logic or page title wiring.
 
 ```js
