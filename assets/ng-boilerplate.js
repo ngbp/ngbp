@@ -1899,8 +1899,17 @@ angular.module("home/home.tpl.html", []).run(["$templateCache", function($templa
     "        style=\"width:130px; height:20px;\"></iframe>" +
     "    </li>" +
     "    <li>" +
-    "      <script type=\"text/javascript\" src=\"https://apis.google.com/js/plusone.js\"></script>" +
-    "      <div class=\"g-plusone\" data-size=\"medium\" data-annotation=\"inline\" data-width=\"300\" data-href=\"http://bit.ly/ng-boilerplate\"></div>" +
+    "      <!-- Place this tag where you want the +1 button to render. -->" +
+    "      <div class=\"g-plusone\" data-size=\"medium\" data-annotation=\"inline\" data-width=\"300\" data-href=\"http://bit.ly/ngBoilerplate\"></div>" +
+    "" +
+    "      <!-- Place this tag after the last +1 button tag. -->" +
+    "      <script type=\"text/javascript\">" +
+    "        (function() {" +
+    "          var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;" +
+    "          po.src = 'https://apis.google.com/js/plusone.js';" +
+    "          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);" +
+    "        })();" +
+    "      </script>" +
     "    </li>" +
     "  </ul> " +
     "  " +
