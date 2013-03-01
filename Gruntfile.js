@@ -262,7 +262,7 @@ module.exports = function ( grunt ) {
         files: [ 
           '<%= src.js %>'
         ],
-        tasks: [ 'jshint:src', 'test:unit', 'concat:dist' ]
+        tasks: [ 'jshint:src', 'test:unit', 'concat:dist', 'uglify:dist' ]
       },
 
       /**
@@ -292,7 +292,7 @@ module.exports = function ( grunt ) {
           '<%= src.atpl %>', 
           '<%= src.ctpl %>'
         ],
-        tasks: [ 'html2js', 'concat:dist' ]
+        tasks: [ 'html2js', 'concat:dist', 'uglify:dist' ]
       },
 
       /**
