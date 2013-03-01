@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html ng-app="ngBoilerplate" ng-controller="AppCtrl">
+  <head>
+    <title>ng-boilerplate</title>
+
+    <!-- your compiles CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/ng-boilerplate.css"/>
+
+    <!--[if IE 7>
+    <link rel="stylesheet" href="assets/font-awesome-ie7.min.css>
+    <![endif]-->
+
+    <!-- libs.js contains all of the concatenated third-party libraries -->
+    <script type="text/javascript" src="assets/libs.js"></script>
+
+    <!-- this is your compiled, minified application code -->
+    <script type="text/javascript" src="assets/ng-boilerplate.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="masthead">
+        <h3 class="muted">ng-boilerplate</h3>
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="container">
+              <ul class="nav">
+                <li active-if-current>
+                  <a href="#/home"><i class="icon-home"></i>Home</a>
+                </li>
+                <li active-if-current>
+                  <a href="#/about"><i class="icon-info-sign"></i>What is it?</a>
+                </li>
+                <li>
+                  <a href="https://github.com/joshdmiller/ng-boilerplate#readme">
+                    <i class="icon-book"></i>
+                    Read the Docs
+                  </a>
+                </li>
+                <li>
+                  <a href="https://github.com/joshdmiller/ng-boilerplate">
+                    <i class="icon-github-alt"></i>
+                    Github
+                  </a>
+                </li>
+                <li>
+                  <a href="https://github.com/joshdmiller/ng-boilerplate/issues">
+                    <i class="icon-comments"></i>
+                    Support
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" ng-view></div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <ul class="social">
+            <li><a target="_blank" href="http://gplus.to/joshdmiller"><i class="icon-google-plus-sign"></i></a></li>
+            <li><a target="_blank" href="http://twitter.com/joshdmiller"><i class="icon-twitter-sign"></i></a></li>
+            <li><a target="_blank" href="http://linkedin.com/in/joshdmiller"><i class="icon-linkedin-sign"></i></a></li>
+            <li><a target="_blank" href="http://github.com/joshdmiller/ng-boilerplate"><i class="icon-github-sign"></i></a></li>
+          </ul>
+          
+
+          <p>
+            (c) 2013 Josh David Miller. 
+            <a href="http://github.com/joshdmiller/ng-boilerplate/fork_select">Fork this</a>
+            to kickstart your next project.
+            <br />
+            ng-boilerplate is based on
+            <a href="http://www.angularjs.org">AngularJS</a>,
+            <a href="http://getbootstrap.com">Bootstrap</a>, 
+            <a href="http://angular-ui.github.com/bootstrap">UI Bootstrap</a>,
+            and 
+            <a href="http://fortawesome.github.com/Font-Awesome">Font Awesome</a>.        
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
