@@ -125,8 +125,18 @@ into your existing repository. Assuming you're starting from scratch, simply
 clone this repository using git:
 
 ```sh
-$ git clone --recursive git://github.com/joshdmiller/ng-boilerplate my-project-name
+$ git clone git://github.com/joshdmiller/ng-boilerplate my-project-name
 $ cd my-project-name
+```
+
+Twitter Bootstrap is contained in a submodule, which is an included repository, so we 
+must initialize and update it, which tells Git to go ahead and pull the right version 
+down. This could also be done by adding `--recursive` to the `git clone` command, as in 
+the "Quick Start" section at the top.
+
+```sh
+$ git submodule init
+$ git submodule update
 ```
 
 And then install the remaining build dependencies locally:
