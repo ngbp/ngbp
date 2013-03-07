@@ -41,10 +41,10 @@ autoWatch = false;
 /**
  * The list of browsers to launch to test on. This is empty by default, so you
  * will need to manually open your browser to http://localhot:9018/ for the 
- * tests to work. You can also just add the executable name of your browser(s)
- * here, e.g. 'firefox', 'chrome', 'chromium'.
+ * tests to work. Currently available browser names:
+ * Chrome, ChromeCanary, Firefox, Opera, Safari, PhantomJS
  */
 browsers = [
-  'firefox'
+  'Firefox'
 ];
 
