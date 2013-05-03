@@ -10,12 +10,12 @@ angular.module( 'ngBoilerplate', [
   $routeProvider.otherwise({ redirectTo: '/home' });
 })
 
-.run([ 'titleService', function run ( titleService ) {
+.run( function run ( titleService ) {
   titleService.setSuffix( ' | ngBoilerplate' );
-}])
+})
 
-.controller( 'AppCtrl', [ '$scope', '$location', function AppCtrl ( $scope, $location ) {
-}])
+.controller( 'AppCtrl', function AppCtrl ( $scope, $location ) {
+})
 
 ;
 

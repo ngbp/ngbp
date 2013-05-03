@@ -1,6 +1,6 @@
 angular.module( 'plusOne', [] )
 
-.directive( 'plusOne', [ function() {
+.directive( 'plusOne', function() {
   return {
     link: function( scope, element, attrs ) {
       gapi.plusone.render( element[0], {
@@ -9,7 +9,7 @@ angular.module( 'plusOne', [] )
       });
     }
   };
-}])
+})
 
 ;
 

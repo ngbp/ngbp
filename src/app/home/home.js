@@ -22,19 +22,19 @@ angular.module( 'ngBoilerplate.home', [
  * will handle ensuring they are all available at run-time, but splitting it
  * this way makes each module more "self-contained".
  */
-.config([ '$routeProvider', function config( $routeProvider ) {
+.config(function config( $routeProvider ) {
   $routeProvider.when( '/home', {
     controller: 'HomeCtrl',
     templateUrl: 'home/home.tpl.html'
   });
-}])
+})
 
 /**
  * And of course we define a controller for our route.
  */
-.controller( 'HomeCtrl', [ '$scope', 'titleService', function HomeController( $scope, titleService ) {
+.controller( 'HomeCtrl', function HomeController( $scope, titleService ) {
   titleService.setTitle( 'Home' );
-}])
+})
 
 ;
 

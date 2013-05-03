@@ -4,14 +4,14 @@ angular.module( 'ngBoilerplate.about', [
   'titleService'
 ])
 
-.config([ '$routeProvider', function config( $routeProvider ) {
+.config(function config( $routeProvider ) {
   $routeProvider.when( '/about', {
     controller: 'AboutCtrl',
     templateUrl: 'about/about.tpl.html'
   });
-}])
+})
 
-.controller( 'AboutCtrl', [ '$scope', 'titleService', function AboutCtrl( $scope, titleService ) {
+.controller( 'AboutCtrl', function AboutCtrl( $scope, titleService ) {
   titleService.setTitle( 'What is It?' );
   
   // This is simple a demo for UI Boostrap.
@@ -20,6 +20,6 @@ angular.module( 'ngBoilerplate.about', [
     "And another choice for you.",
     "but wait! A third!"
   ];
-}])
+})
 
 ;

@@ -1,6 +1,6 @@
 angular.module( 'activeIfCurrent', [])
 
-.directive( 'activeIfCurrent', [ '$location', function( $location ) {
+.directive( 'activeIfCurrent', function( $location ) {
   return {
     scope: true,
     link: function( scope, element, attrs ) {
@@ -19,5 +19,7 @@ angular.module( 'activeIfCurrent', [])
       scope.$on( '$locationChangeSuccess', check );
     }
   };
-}]);
+})
+
+;
 
