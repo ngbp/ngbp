@@ -252,13 +252,25 @@ module.exports = function ( grunt ) {
      */
     delta: {
       /**
+       * By default, we want the Live Reload to work for all tasks; this is
+       * overridden in some tasks (like this file) where browser resources are
+       * unaffected. It runs by default on port 35729.
+       */
+      options: {
+        livereload: true
+      },
+
+      /**
        * When the Gruntfile changes, we just want to lint it. That said, the
        * watch will have to be restarted if it should take advantage of any of
        * the changes.
        */
       gruntfile: {
         files: 'Gruntfile.js',
-        tasks: [ 'jshint:gruntfile' ]
+        tasks: [ 'jshint:gruntfile' ],
+        options: {
+          livereload: false
+        }
       },
 
       /**
@@ -319,7 +331,10 @@ module.exports = function ( grunt ) {
         files: [
           '<%= src.unit %>'
         ],
-        tasks: [ 'jshint:test', 'karma:unit:run' ]
+        tasks: [ 'jshint:test', 'karma:unit:run' ],
+        options: {
+          livereload: false
+        }
       }
     }
   });

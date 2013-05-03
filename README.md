@@ -220,6 +220,33 @@ changes:
 As covered in the previous section, will `watch` execute a full build and run
 all of the aforementioned `delta:*` tasks.
 
+### Live Reload!
+
+`ngBoilerplate` now includes [Live Reload](http://livereload.com/), so you no
+longer have to refresh your page after making changes! You need a Live Reload
+browser plugin for this:
+
+- Chrome - [Chrome Webstore](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)
+- Firefox - [Download from Live Reload](http://download.livereload.com/2.0.8/LiveReload-2.0.8.xpi)
+- Safari - [Download from Live Reload](http://download.livereload.com/2.0.9/LiveReload-2.0.9.safariextz)
+- Internet Explorer - Surely you jest.
+
+Note that if you're using the Chrome version with `file://` URLs (as is the
+default with `ngBoilerplate`) you need to tell Live Reload to allow it. Go to
+`Menu -> Tools -> Extensions` and check the "Allow access to file URLs" box.
+
+When you load your page, click the Live Reload icon in your toolbar and
+everything should work magically. w00t!
+
+If you'd prefer to not install a browser extension, then you must add the
+following to the end of your `body` tag in `index.html`:
+
+```html
+<script src="http://localhost:35729/livereload.js"></script>
+```
+
+Boom!
+
 ## Roadmap
 
 This is a project that is not broad in scope, so there's not really much of a
