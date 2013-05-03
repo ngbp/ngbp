@@ -15,7 +15,7 @@ describe( 'titleService', function() {
     expect( titleService.getTitle() ).toEqual( title );
   }));
 
-  it( 'should allow specification a suffix', inject( function() {
+  it( 'should allow specification of a suffix', inject( function() {
     var suffix = " :: new suffix";
     titleService.setSuffix( suffix );
 

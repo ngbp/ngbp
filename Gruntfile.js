@@ -11,9 +11,10 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-karma');
 
   /**
-   * The `build` directory contains our custom Grunt tasks for using testacular
+   * The `build` directory contains our custom Grunt tasks for using karma
    * and compiling our templates into the cache. If we just tell Grunt about the
    * directory, it will load all the requisite JavaSript files for us.
    */
@@ -225,11 +226,17 @@ module.exports = function ( grunt ) {
     },
 
     /**
-     * The Testacular configurations.
+     * The Karma configurations.
      */
-    test: {
+    karma: {
+      options: {
+        configFile: 'karma/karma-unit.js'
+      },
       unit: {
-        conf: 'testacular/testacular-unit.js'
+        background: true
+      },
+      continuous: {
+        singleRun: true
       }
     },
 
@@ -262,7 +269,7 @@ module.exports = function ( grunt ) {
         files: [ 
           '<%= src.js %>'
         ],
-        tasks: [ 'jshint:src', 'test:unit', 'concat:dist', 'uglify:dist' ]
+        tasks: [ 'jshint:src', 'karma:unit:run', 'concat:dist', 'uglify:dist' ]
       },
 
       /**
@@ -312,7 +319,7 @@ module.exports = function ( grunt ) {
         files: [
           '<%= src.unit %>'
         ],
-        tasks: [ 'jshint:test', 'test:unit' ]
+        tasks: [ 'jshint:test', 'karma:unit:run' ]
       }
     }
   });
@@ -325,13 +332,13 @@ module.exports = function ( grunt ) {
    * before watching for changes.
    */
   grunt.renameTask( 'watch', 'delta' );
-  grunt.registerTask( 'watch', [ 'default', 'delta' ] );
+  grunt.registerTask( 'watch', [ 'default', 'karma:unit', 'delta' ] );
 
   /**
    * The default task is to build.
    */
   grunt.registerTask( 'default', [ 'build' ] );
-  grunt.registerTask( 'build', ['clean', 'html2js', 'jshint', 'test', 'concat', 'uglify', 'recess', 'index', 'copy'] );
+  grunt.registerTask( 'build', ['clean', 'html2js', 'jshint', 'karma:continuous', 'concat', 'uglify', 'recess', 'index', 'copy'] );
 
   /**
    * A task to build the project, without some of the slower processes. This is

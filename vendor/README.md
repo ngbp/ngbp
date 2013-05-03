@@ -61,7 +61,7 @@ libs: {
 
 jQuery would then be included in the final library by default. If jQuery was
 also needed during testing, it would need to be included in the `files` section
-of `testacular/testacular-unit.conf`:
+of `karma/karma-unit.conf`:
 
 ```js
 files = [

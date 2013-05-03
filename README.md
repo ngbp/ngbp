@@ -11,7 +11,7 @@ Install Node.js and then:
 ```sh
 $ git clone --recursive git://github.com/joshdmiller/ng-boilerplate
 $ cd ng-boilerplate
-$ sudo npm -g install grunt-cli testacular
+$ sudo npm -g install grunt-cli karma
 $ npm install
 $ grunt watch
 ```
@@ -37,7 +37,7 @@ The principal goal of `ngBoilerplate` is to set projects up for long-term
 success.  So `ngBoilerplate` tries to follow best practices everywhere it can.
 These are:
 
-- Properly orchestated modules to encourage drag-and-drop component re-use.
+- Properly orchestrated modules to encourage drag-and-drop component re-use.
 - Tests exist alongside the component they are testing, no separate `test`
   directory required. The build process should be sophisticated enough to handle
   this.
@@ -80,7 +80,7 @@ ng-boilerplate/
   |  |  |- <reusable code & external libs>
   |  |- less/
   |  |  |- main.less
-  |- testacular/
+  |- karma/
   |- vendor/
   |  |- angular/
   |  |- twitter-bootstrap/
@@ -97,7 +97,7 @@ learn more.
 
 - `build/` - custom scripts for Grunt.
 - `src/` - our application sources. [Read more &raquo;](src/README.md)
-- `testacular` - test configuration.
+- `karma` - test configuration.
 - `vendor` - files needed to make everything happen, but *not* libraries our
   application uses. [Read more &raquo;](vendor/README.md)
 - `Gruntfile.js` - our build script; see "The Build System" below.
@@ -110,12 +110,12 @@ learn more.
 
 `ngBoilerplate` uses [Grunt](http://gruntjs.org) as its build system, so
 [Node.js](http://nodejs.org) is required. Also, Grunt by default no longer comes
-with a command-line utility and Testacular must end up in your global path for
+with a command-line utility and Karma must end up in your global path for
 the build system to find it, so they must be installed independently. Once you
 have Node.js installed, you can simply use `npm` to make it all happen:
 
 ```sh
-$ npm -g install grunt-cli testacular
+$ npm -g install grunt-cli karma
 ```
 
 If you're on Linux (like I am) then throw `sudo` in the front of that command.
