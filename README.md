@@ -9,10 +9,11 @@ An opinionated kickstarter for [AngularJS](http://angularjs.org) projects.
 Install Node.js and then:
 
 ```sh
-$ git clone --recursive git://github.com/joshdmiller/ng-boilerplate
+$ git clone git://github.com/joshdmiller/ng-boilerplate
 $ cd ng-boilerplate
-$ sudo npm -g install grunt-cli karma
+$ sudo npm -g install grunt-cli karma bower
 $ npm install
+$ bower install
 $ grunt watch
 ```
 
@@ -71,6 +72,9 @@ At a high level, the structure looks roughly like this:
 ```
 ng-boilerplate/
   |- build/
+  |  |- angular/
+  |- grunt-tasks/
+  |- karma/
   |- src/
   |  |- app/
   |  |  |- <app logic>
@@ -80,10 +84,10 @@ ng-boilerplate/
   |  |  |- <reusable code & external libs>
   |  |- less/
   |  |  |- main.less
-  |- karma/
   |- vendor/
-  |  |- angular/
-  |  |- twitter-bootstrap/
+  |  |- angular-bootstrap/
+  |  |- bootstrap/
+  |  |- placeholders/
   |- Gruntfile.js
   |- module.prefix
   |- module.suffix
@@ -95,48 +99,46 @@ What follows is a brief description of each entry, but all directories contain
 their own `README.md` file with additional documentation, so browse around to
 learn more.
 
-- `build/` - custom scripts for Grunt.
-- `src/` - our application sources. [Read more &raquo;](src/README.md)
+- `build/` - files needed to make everything happen, but *not* libraries our
+  application uses. [Read more &raquo;](build/README.md)
+- `grunt-tasks/` - custom scripts for Grunt.
 - `karma` - test configuration.
-- `vendor` - files needed to make everything happen, but *not* libraries our
-  application uses. [Read more &raquo;](vendor/README.md)
+- `src/` - our application sources. [Read more &raquo;](src/README.md)
+- `vendor/` - third-party libraries. [Bower](http://bower.io) will install
+  packages here.
+- `.bowerrc` - the Bower configuration file. This tells Bower to install
+  components into the `vendor/` directory.
+- `bower.js` - this is our project configuration for Bower and it contains the
+  list of Bower dependencies we need.
 - `Gruntfile.js` - our build script; see "The Build System" below.
 - `module.prefix` and `module.suffix` - our compiled application script is
   wrapped in these, which by default are used to place the application inside a
   self-executing anonymous function to ensure no clashes with other libraries.
-- `package.json` - metadata about the app, used by NPM and our build script.
+- `package.json` - metadata about the app, used by NPM and our build script. Our
+  NPM dependencies are listed here.
 
 ### Detailed Installation
 
 `ngBoilerplate` uses [Grunt](http://gruntjs.org) as its build system, so
 [Node.js](http://nodejs.org) is required. Also, Grunt by default no longer comes
-with a command-line utility and Karma must end up in your global path for
-the build system to find it, so they must be installed independently. Once you
-have Node.js installed, you can simply use `npm` to make it all happen:
+with a command-line utility and Karma and Bower must end up in your global path
+for the build system to find it, so they must be installed independently. Once
+you have Node.js installed, you can simply use `npm` to make it all happen:
 
 ```sh
-$ npm -g install grunt-cli karma
+$ npm -g install grunt-cli karma bower
 ```
 
-If you're on Linux (like I am) then throw `sudo` in the front of that command.
-If you're on Windows, you're on your own.  Next, you can either clone this
-repository using Git, download it as a zip file from GitHub, or merge the branch
-into your existing repository. Assuming you're starting from scratch, simply
-clone this repository using git:
+If you're on Linux (like I am) then throw `sudo` in front of that command.  If
+you're on Windows, you're on your own.
+
+Next, you can either clone this repository using Git, download it as a zip file
+from GitHub, or merge the branch into your existing repository. Assuming you're
+starting from scratch, simply clone this repository using git:
 
 ```sh
 $ git clone git://github.com/joshdmiller/ng-boilerplate my-project-name
 $ cd my-project-name
-```
-
-Twitter Bootstrap is contained in a submodule, which is an included repository, so we 
-must initialize and update it, which tells Git to go ahead and pull the right version 
-down. This could also be done by adding `--recursive` to the `git clone` command, as in 
-the "Quick Start" section at the top.
-
-```sh
-$ git submodule init
-$ git submodule update
 ```
 
 And then install the remaining build dependencies locally:
@@ -146,8 +148,31 @@ $ npm install
 ```
 
 This will read the `dependencies` (empty by default) and the `devDependencies`
-arrays from `package.json` and install everything needed into a folder called
-`node_modules`.  Technically, `ngBoilerplate` is now ready to go.
+(which contains our build requirements) from `package.json` and install
+everything needed into a folder called `node_modules/`.
+
+Twitter Bootstrap and AngularUI Bootstrap are Bower packages listed in
+`bower.js`. Since they are already listed, simply run this to install them into
+the `vendor/` directory:
+
+```sh
+$ bower install
+```
+
+In the future, should you want to add a new Bower package to your app, run the
+`install` command:
+
+```sh
+$ bower install package-name --save-dev
+```
+
+The `--save-dev` flag tells Bower to add the package at its current version to
+our project's `bower.js` file so should another developer download our
+application (or we download it from a different computer), we can simply run the
+`bower install` command as above and all our dependencies will be installed for
+us. Neat!
+
+Technically, `ngBoilerplate` is now ready to go.
 
 However, prior to hacking on your application, you will want to modify the
 `package.json` file to contain your project's information. Do not remove any
@@ -160,7 +185,7 @@ To ensure your setup works, launch grunt:
 $ grunt watch
 ```
 
-The built files are placed in the `dist` directory.  Open the `dist/index.html`
+The built files are placed in the `dist/` directory.  Open the `dist/index.html`
 file in your browser. Because everything is compiled, no XHR requests are needed
 to retrieve templates, so until this needs to communicate with your backend,
 there is no need to run it from a web server.
@@ -172,6 +197,10 @@ to date. For example, when a template file changes, the templates are recompiled
 and concatenated with the rest of the JavaScript files, but when a test/spec
 file changes, only the tests are run. This allows the watch command to complete
 in a fraction of the time it would ordinarily take.
+
+In addition, if you're running a Live Reload plugin in your browser (see below),
+you won't even have to refresh to see the changes! When the `watch` task detects
+a file change, it will reload the page for you. Sweet.
 
 However, a complete build is always available by simply running the default
 task:
@@ -217,8 +246,9 @@ changes:
 * `delta:unittest` - When any `*.spec.js` file in `src/` changes, the test files
   are linted and the unit tests are executed.
 
-As covered in the previous section, will `watch` execute a full build and run
-all of the aforementioned `delta:*` tasks.
+As covered in the previous section, `grunt watch` will execute a full build
+up-front and then run any of the aforementioned `delta:*` tasks as needed to
+ensure the fastest possible build.
 
 ### Live Reload!
 

@@ -2,4 +2,6 @@
 *~
 dist/
 node_modules/
-
+vendor/angular-bootstrap/
+vendor/jquery/
+vendor/bootstrap/

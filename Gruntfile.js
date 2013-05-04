@@ -19,7 +19,7 @@ module.exports = function ( grunt ) {
    * and compiling our templates into the cache. If we just tell Grunt about the
    * directory, it will load all the requisite JavaSript files for us.
    */
-  grunt.loadTasks('build');
+  grunt.loadTasks('grunt-tasks');
 
   /**
    * This is the configuration object Grunt uses to give each plugin its 
@@ -54,7 +54,7 @@ module.exports = function ( grunt ) {
     },
 
     /**
-     * This is a collection of file definitions we use in the configurations of
+     * This is a collection of file definitions we use in the configuration of
      * build tasks. `js` is all project javascript, less tests. `atpl` contains
      * our reusable components' template HTML files, while `ctpl` contains the
      * same, but for our app's code. `html` is just our main HTML file and 
@@ -68,6 +68,24 @@ module.exports = function ( grunt ) {
       html: [ 'src/index.html' ],
       less: 'src/less/main.less',
       unit: [ 'src/**/*.spec.js' ]
+    },
+
+    /**
+     * This is also a collection of file definitions we use in the
+     * configuration of build tasks, but it differs from the `src` property in
+     * that these values are entirely user-defined. While the `src` property
+     * ensures all standardized files are collected for compilation, it is the
+     * user's job to ensure non-standardized (i.e. vendor-related) files are
+     * handled appropriately.
+     *
+     * The `vendor.js` property holds files to be automatically concatenated
+     * and minified with our project source files.
+     */
+    vendor: {
+      js: [
+        'vendor/angular-bootstrap/ui-bootstrap-tpls.min.js',
+        'vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js'
+      ]
     },
 
     /**
@@ -114,7 +132,7 @@ module.exports = function ( grunt ) {
         options: {
           banner: '<%= meta.banner %>'
         },
-        src: [ 'module.prefix', '<%= src.js %>', '<%= src.tpljs %>', 'module.suffix' ],
+        src: [ 'module.prefix', '<%= src.js %>', '<%= src.tpljs %>', '<%= vendor.js %>', 'module.suffix' ],
         dest: '<%= distdir %>/assets/<%= pkg.name %>.js'
       },
 
@@ -127,7 +145,7 @@ module.exports = function ( grunt ) {
        */
       libs: {
         src: [ 
-          'vendor/angular/angular.js'
+          'build/angular/angular.js'
         ],
         dest: '<%= distdir %>/assets/libs.js'
       }
