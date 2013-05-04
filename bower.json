@@ -3,6 +3,7 @@
   "version": "0.2.0-SNAPSHOT",
   "devDependencies": {
     "bootstrap": "~2.3.1",
-    "angular-bootstrap": "~0.3.0"
+    "angular-bootstrap": "~0.3.0",
+    "angular-ui-utils": "~0.0.1"
   }
 }

@@ -14,7 +14,8 @@ files = [
   'src/**/*.js',
   'dist/tmp/**/*.js',
   'vendor/placeholders/*.js',
-  'vendor/angular-bootstrap/*.js'
+  'vendor/angular-bootstrap/*.js',
+  'vendor/angular-ui-utils/modules/route/*.js'
 ];
 
 /**
