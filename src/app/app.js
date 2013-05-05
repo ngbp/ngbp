@@ -3,7 +3,7 @@ angular.module( 'ngBoilerplate', [
   'component-templates',
   'ngBoilerplate.home',
   'ngBoilerplate.about',
-  'activeIfCurrent'
+  'ui.route'
 ])
 
 .config( function myAppConfig ( $routeProvider ) {

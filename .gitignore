@@ -5,3 +5,5 @@ node_modules/
 vendor/angular-bootstrap/
 vendor/jquery/
 vendor/bootstrap/
+vendor/angular/
+vendor/angular-ui-utils/
