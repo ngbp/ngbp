@@ -263,6 +263,7 @@ module.exports = function ( grunt ) {
         configFile: 'karma/karma-unit.js'
       },
       unit: {
+        runnerPort: 9101,
         background: true
       },
       continuous: {
