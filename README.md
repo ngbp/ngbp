@@ -121,6 +121,15 @@ learn more.
 
 ### Detailed Installation
 
+This section provides a little more detailed understanding of what goes into
+getting `ngBoilerplate` up and running. Though `ngBoilerplate` is really simple
+to use, it might help to have an understanding of the tools involved here, like
+Node.js and Grunt and Bower. If you're completely new to highly organized,
+modern JavaScript development, take a few short minutes to read [this overview
+of the tools](tools.md) before continuing with this section.
+
+Okay, ready to go? Here it is:
+
 `ngBoilerplate` uses [Grunt](http://gruntjs.org) as its build system, so
 [Node.js](http://nodejs.org) is required. Also, Grunt by default no longer comes
 with a command-line utility and Karma and Bower must end up in your global path
