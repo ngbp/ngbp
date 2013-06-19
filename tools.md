@@ -62,7 +62,7 @@ $ grunt
 ```
 
 This will do everything needed and place our built code inside a folder called
-`dist/`. Even more magical, we can tell Grunt to watch for file changes we make
+`build/`. Even more magical, we can tell Grunt to watch for file changes we make
 so it can re-build our site on-the-fly:
 
 ```sh
@@ -101,17 +101,17 @@ configuration properties of their own name. For example, the `clean` task just
 takes an array of files to delete when the task runs:
 
 ```js
-clean: [ '<%= distdir %>' ],
+clean: [ '<%= build_dir %>', '<%= compile_dir %>' ],
 ```
 
 In Grunt, the `<%= varName %>` is a way of re-using configuration variables.
-Earlier in the config, we defined what `distdir` meant:
+Earlier in the config, we defined what `build_dir` meant:
 
 ```js
-distdir: 'dist',
+build_dir: 'build',
 ```
 
-When the clean task runs, it will delete the `dist/` folder entirely so that
+When the clean task runs, it will delete the `build/` folder entirely so that
 when our new build runs, we don't encounter any problems with stale or old
 files. Most tasks, however, have considerably more complicated configuration
 requirements, but I've tried to document what each one is doing and what the

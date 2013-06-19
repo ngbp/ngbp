@@ -9,10 +9,11 @@ basePath = '../';
 files = [
   JASMINE,
   JASMINE_ADAPTER,
-  'build/angular/angular.js',
-  'build/angular/angular-mocks.js',
+  'vendor/angular/angular.js',
+  'vendor/angular-mocks/angular-mocks.js',
   'src/**/*.js',
-  'dist/tmp/**/*.js',
+  'build/templates-app.js',
+  'build/templates-common.js',
   'vendor/placeholders/*.js',
   'vendor/angular-bootstrap/*.js',
   'vendor/angular-ui-utils/modules/route/*.js'

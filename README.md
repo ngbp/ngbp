@@ -195,13 +195,13 @@ To ensure your setup works, launch grunt:
 $ grunt watch
 ```
 
-The built files are placed in the `dist/` directory.  Open the `dist/index.html`
-file in your browser. Because everything is compiled, no XHR requests are needed
-to retrieve templates, so until this needs to communicate with your backend,
-there is no need to run it from a web server.
+The built files are placed in the `build/` directory.  Open the
+`build/index.html` file in your browser and check it out! Because everything is
+compiled, no XHR requests are needed to retrieve templates, so until this needs
+to communicate with your backend, there is no need to run it from a web server.
 
 `watch` is actually an alias of the `grunt-contrib-watch` that will first run
-the entire build before watching for file changes. With this setup, any file
+the partial build before watching for file changes. With this setup, any file
 that changes will trigger only those build tasks necessary to bring the app up
 to date. For example, when a template file changes, the templates are recompiled
 and concatenated with the rest of the JavaScript files, but when a test/spec
@@ -231,34 +231,54 @@ changes using `grunt-contrib-watch` and executes one of seven tasks when a file
 changes:
 
 * `delta:gruntfile` - When `Gruntfile.js` changes, this task runs the linter
-  (`jshint`) on that one file.
+  (`jshint`) on that one file and reload the configuration.
 * `delta:assets` - When any file within `src/assets/` changes, all asset files
-  are copied to `dist/assets/`.
-* `delta:html` - When `src/index.html`, it is compiled as a Grunt template, so
-  script names, etc., are dynamically replaced with the correct values from
-  `package.json`.
+  are copied to `build/assets/`.
+* `delta:html` - When `src/index.html` changes, it is compiled as a Grunt
+  template, so script names, etc., are dynamically replaced with the correct
+  values configured dynamically by Grunt.
 * `delta:less` - When any `*.less` file within `src/` changes, the
-  `src/less/main.less` file is linted, compiled, and compressed into
-  `dist/assets/ng-boilerplate.css`.
+  `src/less/main.less` file is linted and copied into
+  `build/assets/ng-boilerplate.css`.
 * `delta:src` - When any JavaScript file within `src/` that does not end in
   `.spec.js` changes, all JavaScript sources are linted, all unit tests are run,
-  and the previously-compiled templates are concatenated with them to form the
-  final JavaScript source file (`dist/assets/ng-boilerplate.js`).
+  and the all source files are re-copied to `build/src`.
 * `delta:tpls` - When any `*.tpl.html` file within `src/` changes, all templates
   are put into strings in a JavaScript file (technically two, one for
   `src/common/` and another for `src/app/`) that will add the template to
   AngularJS's
   [`$templateCache`](http://docs.angularjs.org/api/ng.$templateCache) so
   template files are part of the initial JavaScript payload and do not require
-  any future XHR.  The template cache files are then concatenated with the rest
-  of the scripts into the final JavaScript source file
-  (`dist/assets/ng-boilerplate.js`).
+  any future XHR.  The template cache files are `build/template-app.js` and
+  `build/template-common.js`.
 * `delta:unittest` - When any `*.spec.js` file in `src/` changes, the test files
   are linted and the unit tests are executed.
 
 As covered in the previous section, `grunt watch` will execute a full build
 up-front and then run any of the aforementioned `delta:*` tasks as needed to
 ensure the fastest possible build.
+
+### Build vs. Compile
+
+To make the build even faster, tasks are placed into two categories: build and
+compile. The build tasks (like those we've been discussing) are the minimal
+tasks required to run your app during development.
+
+Compile tasks, however, get your app ready for production. The compile tasks
+include concatenation, minification, compression, etc. These tasks take a little
+bit longer to run and are not at all necessary for development so are not called
+automatically during build or watch.
+
+To initiate a full compile, you simply run the default task:
+
+```sh
+$ grunt
+```
+
+This will perform a build and then a compile. The compiled site - ready for
+uploading to the server! - are located in `bin/`, taking a cue from
+traditional software development. To test that your full site works as
+expected, open the `bin/index.html` file in your browser. Voila!
 
 ### Live Reload!
 
@@ -273,13 +293,14 @@ browser plugin for this:
 
 Note that if you're using the Chrome version with `file://` URLs (as is the
 default with `ngBoilerplate`) you need to tell Live Reload to allow it. Go to
-`Menu -> Tools -> Extensions` and check the "Allow access to file URLs" box.
+`Menu -> Tools -> Extensions` and check the "Allow access to file URLs" box next
+to the Live Reload plugin.
 
 When you load your page, click the Live Reload icon in your toolbar and
 everything should work magically. w00t!
 
 If you'd prefer to not install a browser extension, then you must add the
-following to the end of your `body` tag in `index.html`:
+following to the end of the `body` tag in `index.html`:
 
 ```html
 <script src="http://localhost:35729/livereload.js"></script>

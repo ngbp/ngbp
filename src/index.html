@@ -16,18 +16,15 @@
     <meta property="og:image" content="https://a248.e.akamai.net/assets.github.com/images/modules/logos_page/Octocat.png?1366128846" />
     <meta property="og:description" content="Non-Trivial AngularJS Made Easy: Everything you need to kickstart AngularJS projects: a best-practice directory structure, an intelligent build system, and the best web design libraries around.">
 
-    <!-- your compiles CSS -->
-    <link rel="stylesheet" type="text/css" href="assets/<%= grunt.config.get('pkg.name') %>.css"/>
+    <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
+    <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
 
     <!--[if IE 7>
-    <link rel="stylesheet" href="assets/font-awesome-ie7.min.css>
+    <link rel="stylesheet" href="assets/font-awesome-ie7.min.css />
     <![endif]-->
 
-    <!-- libs.js contains all of the concatenated third-party libraries -->
-    <script type="text/javascript" src="assets/libs.js"></script>
-
-    <!-- this is your compiled, minified application code -->
-    <script type="text/javascript" src="assets/<%= grunt.config.get('pkg.name') %>.js"></script>
+    <!-- compiled CSS --><% scripts.forEach( function ( file ) { %>
+    <script type="text/javascript" src="<%= file %>"></script><% }); %>
 
     <!-- it's stupid to have to load it here, but this is for the +1 button -->
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js">
