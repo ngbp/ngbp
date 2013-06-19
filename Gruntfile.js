@@ -395,7 +395,7 @@ module.exports = function ( grunt ) {
    * based on dynamic names calculated in this Gruntfile. This task compiles it.
    */
   grunt.registerTask( 'index', 'Process index.html template', function () {
-    grunt.file.copy('src/index.html', 'dist/index.html', { process: grunt.template.process });
+    grunt.file.copy('src/index.html', grunt.config('distdir') + '/index.html', { process: grunt.template.process });
   });
 
 };
