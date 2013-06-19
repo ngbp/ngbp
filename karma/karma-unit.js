@@ -16,7 +16,8 @@ files = [
   'build/templates-common.js',
   'vendor/placeholders/*.js',
   'vendor/angular-bootstrap/*.js',
-  'vendor/angular-ui-utils/modules/route/*.js'
+  'vendor/angular-ui-utils/modules/route/*.js',
+  'vendor/ui-router/release/angular-ui-router.js'
 ];
 
 /**

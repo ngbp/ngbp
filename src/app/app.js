@@ -3,11 +3,12 @@ angular.module( 'ngBoilerplate', [
   'templates-common',
   'ngBoilerplate.home',
   'ngBoilerplate.about',
+  'ui.state',
   'ui.route'
 ])
 
-.config( function myAppConfig ( $routeProvider ) {
-  $routeProvider.otherwise({ redirectTo: '/home' });
+.config( function myAppConfig ( $stateProvider, $urlRouterProvider ) {
+  $urlRouterProvider.otherwise( '/home' );
 })
 
 .run( function run ( titleService ) {
