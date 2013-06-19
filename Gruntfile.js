@@ -95,6 +95,19 @@ module.exports = function ( grunt ) {
     },
 
     /**
+     * This is a convenience list of all application source files. This is used
+     * in some other tasks.
+     */
+    build_sources: [
+      '<%= vendor_files.js %>',
+      '<%= app_files.js %>',
+      '<%= html2js.common.dest %>',
+      '<%= html2js.app.dest %>',
+      '<%= vendor_files.css %>',
+      '<%= recess.build.dest %>'
+    ],
+
+    /**
      * The directories to delete when `grunt clean` is executed.
      */
     clean: [ 
@@ -171,7 +184,7 @@ module.exports = function ( grunt ) {
           '<%= vendor_files.js %>', 
           'module.suffix' 
         ],
-        dest: '<%= compile_dir %>/<%= pkg.name %>.js'
+        dest: '<%= compile_dir %>/assets/<%= pkg.name %>.js'
       }
     },
 
@@ -302,7 +315,7 @@ module.exports = function ( grunt ) {
      */
     karma: {
       options: {
-        configFile: 'karma/karma-unit.js'
+        configFile: '<%= build_dir %>/karma-unit.js'
       },
       unit: {
         runnerPort: 9101,
@@ -327,14 +340,7 @@ module.exports = function ( grunt ) {
        */
       build: {
         dir: '<%= build_dir %>',
-        src: [
-          '<%= vendor_files.js %>',
-          '<%= app_files.js %>',
-          '<%= html2js.common.dest %>',
-          '<%= html2js.app.dest %>',
-          '<%= vendor_files.css %>',
-          '<%= recess.build.dest %>'
-        ]
+        src: [ '<%= build_sources %>' ]
       },
 
       /**
@@ -348,6 +354,22 @@ module.exports = function ( grunt ) {
           '<%= concat.compile_js.dest %>',
           '<%= vendor_files.css %>',
           '<%= recess.compile.dest %>'
+        ]
+      }
+    },
+
+    /**
+     * This task compiles the karma template so that changes to its file array
+     * don't have to be managed manually.
+     */
+    karmaconfig: {
+      unit: {
+        dir: '<%= build_dir %>',
+        src: [ 
+          '<%= vendor_files.js %>',
+          '<%= html2js.app.dest %>',
+          '<%= html2js.common.dest %>',
+          'vendor/angular-mocks/angular-mocks.js'
         ]
       }
     },
@@ -469,8 +491,9 @@ module.exports = function ( grunt ) {
    * The `build` task gets your app ready to run for development and testing.
    */
   grunt.registerTask( 'build', [
-    'clean', 'html2js', 'jshint', 'karma:continuous', 'recess:build', 
-    'copy:build_assets', 'copy:build_appjs', 'copy:build_vendorjs', 'index:build'
+    'clean', 'html2js', 'jshint', 'karmaconfig', 'karma:continuous',
+    'recess:build', 'copy:build_assets', 'copy:build_appjs',
+    'copy:build_vendorjs', 'index:build'
   ]);
 
   /**
@@ -481,6 +504,24 @@ module.exports = function ( grunt ) {
     'recess:compile', 'copy:compile_assets', 'ngmin', 'concat', 'uglify', 'index:compile'
   ]);
 
+  /**
+   * A utility function to get all app JavaScript sources.
+   */
+  function filterForJS ( files ) {
+    return files.filter( function ( file ) {
+      return file.match( /\.js$/ );
+    });
+  }
+
+  /**
+   * A utility function to get all app CSS sources.
+   */
+  function filterForCSS ( files ) {
+    return files.filter( function ( file ) {
+      return file.match( /\.css$/ );
+    });
+  }
+
   /** 
    * The index.html template includes the stylesheet and javascript sources
    * based on dynamic names calculated in this Gruntfile. This task assembles
@@ -489,16 +530,10 @@ module.exports = function ( grunt ) {
    */
   grunt.registerMultiTask( 'index', 'Process index.html template', function () {
     var dirRE = new RegExp( '^('+grunt.config('build_dir')+'|'+grunt.config('compile_dir')+')\/', 'g' );
-    
-    var jsFiles = this.filesSrc.filter( function ( file ) {
-      return file.match( /\.js$/ );
-    }).map( function ( file ) {
+    var jsFiles = filterForJS( this.filesSrc ).map( function ( file ) {
       return file.replace( dirRE, '' );
     });
-
-    var cssFiles = this.filesSrc.filter( function ( file ) {
-      return file.match( /\.css$/ );
-    }).map( function ( file ) {
+    var cssFiles = filterForCSS( this.filesSrc ).map( function ( file ) {
       return file.replace( dirRE, '' );
     });
 
@@ -508,6 +543,25 @@ module.exports = function ( grunt ) {
           data: {
             scripts: jsFiles,
             styles: cssFiles
+          }
+        });
+      }
+    });
+  });
+
+  /**
+   * In order to avoid having to specify manually the files needed for karma to
+   * run, we use grunt to manage the list for us. The `karma/*` files are
+   * compiled as grunt templates for use by Karma. Yay!
+   */
+  grunt.registerMultiTask( 'karmaconfig', 'Process karma config templates', function () {
+    var jsFiles = filterForJS( this.filesSrc );
+    
+    grunt.file.copy( 'karma/karma-unit.tpl.js', grunt.config( 'build_dir' ) + '/karma-unit.js', { 
+      process: function ( contents, path ) {
+        return grunt.template.process( contents, {
+          data: {
+            scripts: jsFiles
           }
         });
       }
