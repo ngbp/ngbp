@@ -10,6 +10,8 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-coffee');
+  grunt.loadNpmTasks('grunt-coffeelint');
   grunt.loadNpmTasks('grunt-recess');
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-ngmin');
@@ -60,12 +62,17 @@ module.exports = function ( grunt ) {
      * app's unit tests.
      */
     app_files: {
-      js: [ 'src/**/*.js', '!src/**/*.spec.js' ], 
+      js: [ 'src/**/*.js', '!src/**/*.spec.js' ],
+      jsunit: [ 'src/**/*.spec.js' ],
+      
+      coffee: [ 'src/**/*.coffee', '!src/**/*.spec.coffee' ],
+      coffeeunit: [ 'src/**/*.spec.coffee' ],
+
       atpl: [ 'src/app/**/*.tpl.html' ],
       ctpl: [ 'src/common/**/*.tpl.html' ],
+
       html: [ 'src/index.html' ],
-      less: 'src/less/main.less',
-      unit: [ 'src/**/*.spec.js' ]
+      less: 'src/less/main.less'
     },
 
     /**
@@ -93,19 +100,6 @@ module.exports = function ( grunt ) {
       css: [
       ]
     },
-
-    /**
-     * This is a convenience list of all application source files. This is used
-     * in some other tasks.
-     */
-    build_sources: [
-      '<%= vendor_files.js %>',
-      '<%= app_files.js %>',
-      '<%= html2js.common.dest %>',
-      '<%= html2js.app.dest %>',
-      '<%= vendor_files.css %>',
-      '<%= recess.build.dest %>'
-    ],
 
     /**
      * The directories to delete when `grunt clean` is executed.
@@ -168,8 +162,8 @@ module.exports = function ( grunt ) {
      */
     concat: {
       /**
-       * The `dist` target is the concatenation of our application source code
-       * and all specified vendor source code into a single file.
+       * The `compile_js` target is the concatenation of our application source
+       * code and all specified vendor source code into a single file.
        */
       compile_js: {
         options: {
@@ -185,6 +179,26 @@ module.exports = function ( grunt ) {
           'module.suffix' 
         ],
         dest: '<%= compile_dir %>/assets/<%= pkg.name %>.js'
+      }
+    },
+
+    /**
+     * `grunt coffee` compiles the CoffeeScript sources. To work well with the
+     * rest of the build, we have a separate compilation task for sources and
+     * specs so they can go to different places. For example, we need the
+     * sources to live with the rest of the copied JavaScript so we can include
+     * it in the final build, but we don't want to include our specs there.
+     */
+    coffee: {
+      source: {
+        options: {
+          bare: true
+        },
+        expand: true,
+        cwd: '.',
+        src: [ '<%= app_files.coffee %>' ],
+        dest: '<%= build_dir %>',
+        ext: '.js'
       }
     },
 
@@ -259,11 +273,10 @@ module.exports = function ( grunt ) {
      */
     jshint: {
       src: [ 
-        '<%= app_files.js %>', 
-        '<%= app_files.unit %>'
+        '<%= app_files.js %>'
       ],
       test: [
-        '<%= app_files.unit %>'
+        '<%= app_files.jsunit %>'
       ],
       gruntfile: [
         'Gruntfile.js'
@@ -278,6 +291,24 @@ module.exports = function ( grunt ) {
         eqnull: true
       },
       globals: {}
+    },
+
+    /**
+     * `coffeelint` does the same as `jshint`, but for CoffeeScript.
+     * CoffeeScript is not the default in ngBoilerplate, so we're just using
+     * the defaults here.
+     */
+    coffeelint: {
+      src: {
+        files: {
+          src: [ '<%= app_files.coffee %>' ]
+        }
+      },
+      test: {
+        files: {
+          src: [ '<%= app_files.coffeeunit %>' ]
+        }
+      }
     },
 
     /**
@@ -340,7 +371,14 @@ module.exports = function ( grunt ) {
        */
       build: {
         dir: '<%= build_dir %>',
-        src: [ '<%= build_sources %>' ]
+        src: [
+          '<%= vendor_files.js %>',
+          '<%= build_dir %>/src/**/*.js',
+          '<%= html2js.common.dest %>',
+          '<%= html2js.app.dest %>',
+          '<%= vendor_files.css %>',
+          '<%= recess.build.dest %>'
+        ]
       },
 
       /**
@@ -408,14 +446,25 @@ module.exports = function ( grunt ) {
       },
 
       /**
-       * When our source files change, we want to run lint them and run our
-       * unit tests.
+       * When our JavaScript source files change, we want to run lint them and
+       * run our unit tests.
        */
-      src: {
+      jssrc: {
         files: [ 
           '<%= app_files.js %>'
         ],
         tasks: [ 'jshint:src', 'karma:unit:run', 'copy:build_appjs' ]
+      },
+
+      /**
+       * When our CoffeeScript source files change, we want to run lint them and
+       * run our unit tests.
+       */
+      coffeesrc: {
+        files: [ 
+          '<%= app_files.coffee %>'
+        ],
+        tasks: [ 'coffeelint:src', 'coffee:source', 'karma:unit:run', 'copy:build_appjs' ]
       },
 
       /**
@@ -457,14 +506,28 @@ module.exports = function ( grunt ) {
       },
 
       /**
-       * When a unit test file changes, we only want to lint it and run the
-       * unit tests. We don't want to do any live reloading.
+       * When a JavaScript unit test file changes, we only want to lint it and
+       * run the unit tests. We don't want to do any live reloading.
        */
-      unittest: {
+      jsunit: {
         files: [
-          '<%= app_files.unit %>'
+          '<%= app_files.jsunit %>'
         ],
         tasks: [ 'jshint:test', 'karma:unit:run' ],
+        options: {
+          livereload: false
+        }
+      },
+
+      /**
+       * When a CoffeeScript unit test file changes, we only want to lint it and
+       * run the unit tests. We don't want to do any live reloading.
+       */
+      coffeeunit: {
+        files: [
+          '<%= app_files.coffeeunit %>'
+        ],
+        tasks: [ 'coffeelint:test', 'karma:unit:run' ],
         options: {
           livereload: false
         }
@@ -491,9 +554,9 @@ module.exports = function ( grunt ) {
    * The `build` task gets your app ready to run for development and testing.
    */
   grunt.registerTask( 'build', [
-    'clean', 'html2js', 'jshint', 'karmaconfig', 'karma:continuous',
-    'recess:build', 'copy:build_assets', 'copy:build_appjs',
-    'copy:build_vendorjs', 'index:build'
+    'clean', 'html2js', 'jshint', 'coffeelint', 'coffee','recess:build',
+    'copy:build_assets', 'copy:build_appjs', 'copy:build_vendorjs',
+    'index:build', 'karmaconfig', 'karma:continuous' 
   ]);
 
   /**
