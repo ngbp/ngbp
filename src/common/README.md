@@ -1,6 +1,6 @@
-# The `src/components/` Directory
+# The `src/common/` Directory
 
-The `src/components/` directory houses internal and third-party re-usable
+The `src/common/` directory houses internal and third-party re-usable
 components. Essentially, this folder is for everything that isn't completely
 specific to this application.
 
@@ -13,23 +13,14 @@ handle components that do not meet this pattern.
 
 ```
 src/
-  |- components/
-  |  |- activeIfCurrent/
-  |  |- placeholders/
+  |- common/
   |  |- plusOne/
   |  |- titleService/
-  |  |- ui-bootstrap/
 ```
 
-- `activeIfCurrent` - a directive to add the "active" class if the menu item
-  matches the current route.
-- `placeholders` - a
-  [third-party](http://joshdmiller.github.com/angular-placeholders) component
-  to generate placeholder images and "lorem ipsum" text.
 - `plusOne` - a simple directive to load a Google +1 Button on an element.
 - `titleService` - a service to change the page title, complete with a
   consistent suffix.
-- `ui-bootstrap` - the Angular UI Bootstrap project.
 
 Every component contained here should be drag-and-drop reusable in any other 
 project; they should depend on no other components that aren't similarly 

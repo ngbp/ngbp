@@ -80,8 +80,8 @@ ng-boilerplate/
   |  |  |- <app logic>
   |  |- assets/
   |  |  |- <static files>
-  |  |- components/
-  |  |  |- <reusable code & external libs>
+  |  |- common/
+  |  |  |- <reusable code>
   |  |- less/
   |  |  |- main.less
   |- vendor/
@@ -101,8 +101,7 @@ learn more.
 
 - `build/` - files needed to make everything happen, but *not* libraries our
   application uses. [Read more &raquo;](build/README.md)
-- `grunt-tasks/` - custom scripts for Grunt.
-- `karma` - test configuration.
+- `karma/` - test configuration.
 - `src/` - our application sources. [Read more &raquo;](src/README.md)
 - `vendor/` - third-party libraries. [Bower](http://bower.io) will install
   packages here. Anything added to this directory will need to be manually added
@@ -247,7 +246,7 @@ changes:
   final JavaScript source file (`dist/assets/ng-boilerplate.js`).
 * `delta:tpls` - When any `*.tpl.html` file within `src/` changes, all templates
   are put into strings in a JavaScript file (technically two, one for
-  `src/components/` and another for `src/app/`) that will add the template to
+  `src/common/` and another for `src/app/`) that will add the template to
   AngularJS's
   [`$templateCache`](http://docs.angularjs.org/api/ng.$templateCache) so
   template files are part of the initial JavaScript payload and do not require

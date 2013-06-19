@@ -57,7 +57,7 @@ module.exports = function ( grunt ) {
     src: {
       js: [ 'src/**/*.js', '!src/**/*.spec.js' ], 
       atpl: [ 'src/app/**/*.tpl.html' ],
-      ctpl: [ 'src/components/**/*.tpl.html' ],
+      ctpl: [ 'src/common/**/*.tpl.html' ],
       tpljs: [ '<%= distdir %>/tmp/**/*.js' ],
       html: [ 'src/index.html' ],
       less: 'src/less/main.less',
@@ -201,8 +201,7 @@ module.exports = function ( grunt ) {
         'Gruntfile.js', 
         '<%= src.js %>', 
         '<%= src.tpljs %>',
-        '<%= src.unit %>',
-        '!src/components/placeholders/**/*'
+        '<%= src.unit %>'
       ],
       test: [
         '<%= src.unit %>'
@@ -242,14 +241,14 @@ module.exports = function ( grunt ) {
       },
 
       /**
-       * These are the templates from `src/components`.
+       * These are the templates from `src/common`.
        */
-      component: {
+      common: {
         options: {
-          base: 'src/components'
+          base: 'src/common'
         },
         src: [ '<%= src.ctpl %>' ],
-        dest: '<%= distdir %>/tmp/templates-components.js'
+        dest: '<%= distdir %>/tmp/templates-common.js'
       }
     },
 

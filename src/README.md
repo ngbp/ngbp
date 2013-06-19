@@ -14,9 +14,9 @@ src/
   |  |- app.spec.js
   |- assets/
   |  |- fonts/
-  |- components/
-  |  |- placeholders/
-  |  |- ui-bootstrap/
+  |- common/
+  |  |- plusOne/
+  |  |- titleService/
   |- less/
   |  |- main.less
   |  |- font-awesome.less
@@ -28,8 +28,8 @@ src/
   another application. [Read more &raquo;](app/README.md)
 - `src/assets/` - static files like fonts and images. 
   [Read more &raquo;](assets/README.md)
-- `src/components/` - third-party libraries or components likely to be reused in
-  another application. [Read more &raquo;](components/README.md)
+- `src/common/` - third-party libraries or components likely to be reused in
+  another application. [Read more &raquo;](common/README.md)
 - `src/less/` - LESS CSS files. [Read more &raquo;](less/README.md)
 - `src/index.html` - this is the HTML document of the single-page application.
   See below.
