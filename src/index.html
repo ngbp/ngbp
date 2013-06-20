@@ -16,6 +16,9 @@
     <meta property="og:image" content="https://a248.e.akamai.net/assets.github.com/images/modules/logos_page/Octocat.png?1366128846" />
     <meta property="og:description" content="Non-Trivial AngularJS Made Easy: Everything you need to kickstart AngularJS projects: a best-practice directory structure, an intelligent build system, and the best web design libraries around.">
 
+    <!-- font awesome from BootstrapCDN -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
     <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
     <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
 
@@ -40,10 +43,16 @@
             <div class="container">
               <ul class="nav">
                 <li ui-route="/home" ng-class="{active:$uiRoute}">
-                  <a href="#/home"><i class="icon-home"></i>Home</a>
+                  <a href="#/home">
+                    <i class="icon-home"></i>
+                    Home
+                  </a>
                 </li>
                 <li ui-route="/about" ng-class="{active:$uiRoute}">
-                  <a href="#/about"><i class="icon-info-sign"></i>What is it?</a>
+                  <a href="#/about">
+                    <i class="icon-info-sign"></i>
+                    What is it?
+                  </a>
                 </li>
                 <li>
                   <a href="https://github.com/joshdmiller/ng-boilerplate#readme">
