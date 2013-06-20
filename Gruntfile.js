@@ -12,6 +12,7 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-coffee');
   grunt.loadNpmTasks('grunt-conventional-changelog');
+  grunt.loadNpmTasks('grunt-bump');
   grunt.loadNpmTasks('grunt-coffeelint');
   grunt.loadNpmTasks('grunt-recess');
   grunt.loadNpmTasks('grunt-karma');
@@ -110,6 +111,22 @@ module.exports = function ( grunt ) {
         dest: 'CHANGELOG.md',
         template: 'changelog.tpl'
       }
+    },
+
+    /**
+     * Increments the version number, etc.
+     */
+    bump: {
+      files: [ 'package.json', 'bower.json' ],
+      updateConfigs: [ 'pkg' ],
+      commit: true,
+      commitMessage: 'chore(release): v${version}',
+      commitFiles: [ 'package.json', 'bower.json' ],
+      createTag: true,
+      tagName: 'v${version}',
+      tagMessage: 'Version ${version}',
+      push: true,
+      pushTo: 'origin'
     },
 
     /**
