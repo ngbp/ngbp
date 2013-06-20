@@ -11,6 +11,7 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-coffee');
+  grunt.loadNpmTasks('grunt-conventional-changelog');
   grunt.loadNpmTasks('grunt-coffeelint');
   grunt.loadNpmTasks('grunt-recess');
   grunt.loadNpmTasks('grunt-karma');
@@ -99,6 +100,16 @@ module.exports = function ( grunt ) {
       ],
       css: [
       ]
+    },
+
+    /**
+     * Creates a changelog on a new version.
+     */
+    changelog: {
+      options: {
+        dest: 'CHANGELOG.md',
+        template: 'changelog.tpl'
+      }
     },
 
     /**
