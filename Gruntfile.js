@@ -65,17 +65,24 @@ module.exports = function ( grunt ) {
      * Increments the version number, etc.
      */
     bump: {
-      files: [ 'package.json', 'bower.json' ],
-      updateConfigs: [ 'pkg' ],
-      commit: true,
-      commitMessage: 'chore(release): v${version}',
-      commitFiles: [ 'package.json', 'bower.json' ],
-      createTag: true,
-      tagName: 'v${version}',
-      tagMessage: 'Version ${version}',
-      push: true,
-      pushTo: 'origin'
-    },
+      options: {
+        files: [
+          "package.json", 
+          "bower.json"
+        ],
+        commit: false,
+        commitMessage: 'chore(release): v%VERSION%',
+        commitFiles: [
+          "package.json", 
+          "client/bower.json"
+        ],
+        createTag: false,
+        tagName: 'v%VERSION%',
+        tagMessage: 'Version %VERSION%',
+        push: false,
+        pushTo: 'origin'
+      }
+    },    
 
     /**
      * The directories to delete when `grunt clean` is executed.
