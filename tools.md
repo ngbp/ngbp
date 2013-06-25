@@ -2,7 +2,7 @@
 
 ## Introduction
 
-`ngBoilerplate` is standards-based, so it uses all the familiar tools to manage
+`ngBoilerplate` is standards-based, so it uses all the usual tools to manage
 and develop client-side code. If you've developed modern, highly-organized
 JavaScript projects before, you are probably already familiar with at least most
 of these tools. What follows is a simple description of the tools of which this
@@ -17,6 +17,7 @@ that you do. If you're on GitHub, I assume you already have a basic
 understanding of Git, which is all you need to make effective use of this
 project. You just need to be able to commit and push and junk - nothing funky.
 If you're not familiar with it, check out the documentation linked to above.
+GitHub also has a great [help section](https://help.github.com/).
 
 ## Node.js & NPM
 
@@ -62,12 +63,15 @@ $ grunt
 ```
 
 This will do everything needed and place our built code inside a folder called
-`build/`. Even more magical, we can tell Grunt to watch for file changes we make
+`bin/`. Even more magical, we can tell Grunt to watch for file changes we make
 so it can re-build our site on-the-fly:
 
 ```sh
 $ grunt watch
 ```
+
+The built files will be in `build/`. See the main [README](README.md) for more
+info.
 
 The next time we change a source file, Grunt will re-build the changed parts of
 the site. If you have a Live Reload plugin installed in your browser, it will
@@ -105,7 +109,7 @@ clean: [ '<%= build_dir %>', '<%= compile_dir %>' ],
 ```
 
 In Grunt, the `<%= varName %>` is a way of re-using configuration variables.
-Earlier in the config, we defined what `build_dir` meant:
+In the `build.config.js`, we defined what `build_dir` meant:
 
 ```js
 build_dir: 'build',
@@ -145,10 +149,10 @@ $ grunt default
 ```
 
 We also define the `watch` task discussed earlier. This is covered in more
-detail in the (main README)[README.md].
+detail in the main (README)[README.md].
 
 Grunt is the engine behind `ngBoilerplate`. It's the magic that makes it move.
-Just getting started, you won't need to alter `Gruntfile.js` much if at all, but
+Just getting started, you won't need to alter `Gruntfile.js` at all, but
 as you get into more advanced application development, you will probably need to
 add more tasks and change some steps around to make this build your own.
 Hopefully, this readme and the documentation within `Gruntfile.js` (as well as
@@ -158,21 +162,25 @@ of course the documentation at gruntjs.com) will set you on the right path.
 
 [Bower](bower.io) is a package manager for the web. It's similar in many
 respects to NPM, though it is significantly simpler and only contains code for
-web projects, like Twitter Bootstrap and its AngularJS counterpart UI Bootstrap.
-Bower allows us to say that our app depends in some way on these other libraries
-so that we can manage all of them in one simple place.
+web projects, like Twitter Bootstrap and its AngularJS counterpart Angular
+Bootstrap. Bower allows us to say that our app depends in some way on these
+other libraries so that we can manage all of them in one simple place.
 
-`ngBoilerplate` comes with a `bower.json` file that looks like this:
+`ngBoilerplate` comes with a `bower.json` file that looks something like this:
 
 ```js
 {
   "name": "ng-boilerplate",
   "version": "0.2.0-SNAPSHOT",
   "devDependencies": {
-    "bootstrap": "~2.3.1",
+    "angular": "~1.0.7",
+    "angular-mocks": "~1.0.7",
+    "bootstrap": "~2.3.2",
     "angular-bootstrap": "~0.3.0",
-    "angular-ui-utils": "~0.0.1"
-  }
+    "angular-ui-router": "~0.0.1",
+    "angular-ui-utils": "~0.0.3"
+  },
+  "dependencies": {}
 }
 ```
 
@@ -202,8 +210,8 @@ overview.
 One last thing to note is that packages installed with Bower are not
 standardized, so we cannot automatically add them to the build process; anything
 installed with Bower (or placed in the `vendor/` directory manually) *must* be
-added to `Gruntfile.js` manually; look for the Bower libs included in
-`ngBoilerplate` by default in there to see what I mean.
+added to your `build.config.js` file manually; look for the Bower libs included
+in `ngBoilerplate` by default in there to see what I mean.
 
 ## Where to Go From Here
 

@@ -583,7 +583,8 @@ module.exports = function ( grunt ) {
         return grunt.template.process( contents, {
           data: {
             scripts: jsFiles,
-            styles: cssFiles
+            styles: cssFiles,
+            version: grunt.config( 'pkg.version' )
           }
         });
       }
