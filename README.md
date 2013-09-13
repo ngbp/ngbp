@@ -17,7 +17,7 @@ $ bower install
 $ grunt watch
 ```
 
-Finally, open `build/index.html` in your browser.
+Finally, open `file:///path/to/ng-boilerplate/build/index.html` in your browser.
 
 Happy hacking!
 
