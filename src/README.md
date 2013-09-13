@@ -16,7 +16,6 @@ src/
   |  |- fonts/
   |- common/
   |  |- plusOne/
-  |  |- titleService/
   |- less/
   |  |- main.less
   |  |- font-awesome.less
