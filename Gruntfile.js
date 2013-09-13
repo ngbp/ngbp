@@ -98,13 +98,24 @@ module.exports = function ( grunt ) {
      * `build_dir`, and then to copy the assets to `compile_dir`.
      */
     copy: {
-      build_assets: {
+      build_app_assets: {
         files: [
           { 
             src: [ '**' ],
             dest: '<%= build_dir %>/assets/',
             cwd: 'src/assets',
             expand: true
+          }
+       ]   
+      },
+      build_vendor_assets: {
+        files: [
+          { 
+            src: [ '<%= vendor_files.assets %>' ],
+            dest: '<%= build_dir %>/assets/',
+            cwd: '.',
+            expand: true,
+            flatten: true
           }
        ]   
       },
@@ -551,8 +562,9 @@ module.exports = function ( grunt ) {
    */
   grunt.registerTask( 'build', [
     'clean', 'html2js', 'jshint', 'coffeelint', 'coffee', 'recess:build',
-    'concat:build_css', 'copy:build_assets', 'copy:build_appjs',
-    'copy:build_vendorjs', 'index:build', 'karmaconfig', 'karma:continuous' 
+    'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
+    'copy:build_appjs', 'copy:build_vendorjs', 'index:build', 'karmaconfig',
+    'karma:continuous' 
   ]);
 
   /**
