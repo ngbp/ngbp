@@ -37,16 +37,18 @@ require their own submodules.
 As a matter of course, we also require the template modules that are generated
 during the build.
 
-However, the modules from `src/components` should be required by the app
+However, the modules from `src/common` should be required by the app
 submodules that need them to ensure proper dependency handling. These are
 app-wide dependencies that are required to assemble your app.
 
 ```js
 angular.module( 'ngBoilerplate', [
-  'app-templates',
-  'component-templates',
+  'templates-app',
+  'templates-common',
   'ngBoilerplate.home',
   'ngBoilerplate.about'
+  'ui.state',
+  'ui.route'
 ])
 ```
 
@@ -58,8 +60,8 @@ is where we want to start, which has a defined route for `/home` in
 `src/app/home/home.js`.
 
 ```js
-.config( function ngBoilerplateConfig ( $routeProvider ) {
-  $routeProvider.otherwise({ redirectTo: '/home' });
+.config( function myAppConfig ( $stateProvider, $urlRouterProvider ) {
+  $urlRouterProvider.otherwise( '/home' );
 })
 ```
 

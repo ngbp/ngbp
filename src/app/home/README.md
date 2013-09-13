@@ -34,6 +34,7 @@ specified, as shown below.
 ```js
 angular.module( 'ngBoilerplate.home', [
   'ui.state',
+  'titleService',
   'plusOne'
 ])
 ```
@@ -68,5 +69,5 @@ nothing.
 
 ```js
 .controller( 'HomeCtrl', function HomeController( $scope ) {
-});
+})
 ```
