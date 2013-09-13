@@ -145,6 +145,17 @@ module.exports = function ( grunt ) {
      */
     concat: {
       /**
+       * The `build_css` target concatenates compiled CSS and vendor CSS
+       * together.
+       */
+      build_css: {
+        src: [
+          '<%= vendor_files.css %>',
+          '<%= recess.build.dest %>'
+        ],
+        dest: '<%= recess.build.dest %>'
+      },
+      /**
        * The `compile_js` target is the concatenation of our application source
        * code and all specified vendor source code into a single file.
        */
@@ -539,9 +550,9 @@ module.exports = function ( grunt ) {
    * The `build` task gets your app ready to run for development and testing.
    */
   grunt.registerTask( 'build', [
-    'clean', 'html2js', 'jshint', 'coffeelint', 'coffee','recess:build',
-    'copy:build_assets', 'copy:build_appjs', 'copy:build_vendorjs',
-    'index:build', 'karmaconfig', 'karma:continuous' 
+    'clean', 'html2js', 'jshint', 'coffeelint', 'coffee', 'recess:build',
+    'concat:build_css', 'copy:build_assets', 'copy:build_appjs',
+    'copy:build_vendorjs', 'index:build', 'karmaconfig', 'karma:continuous' 
   ]);
 
   /**
@@ -549,7 +560,7 @@ module.exports = function ( grunt ) {
    * minifying your code.
    */
   grunt.registerTask( 'compile', [
-    'recess:compile', 'copy:compile_assets', 'ngmin', 'concat', 'uglify', 'index:compile'
+    'recess:compile', 'copy:compile_assets', 'ngmin', 'concat:compile_js', 'uglify', 'index:compile'
   ]);
 
   /**
