@@ -161,7 +161,7 @@ module.exports = function ( grunt ) {
           '<%= vendor_files.js %>', 
           'module.suffix' 
         ],
-        dest: '<%= compile_dir %>/assets/<%= pkg.name %>.js'
+        dest: '<%= compile_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.js'
       }
     },
 
@@ -224,7 +224,7 @@ module.exports = function ( grunt ) {
     recess: {
       build: {
         src: [ '<%= app_files.less %>' ],
-        dest: '<%= build_dir %>/assets/<%= pkg.name %>.css',
+        dest: '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css',
         options: {
           compile: true,
           compress: false,
