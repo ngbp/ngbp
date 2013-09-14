@@ -34,6 +34,15 @@ module.exports = {
   },
 
   /**
+   * This is a collection of files used during testing only.
+   */
+  test_files: {
+    js: [
+      'vendor/angular-mocks/angular-mocks.js'
+    ]
+  },
+
+  /**
    * This is the same as `app_files`, except it contains patterns that
    * reference vendor code (`vendor/`) that we need to place into the build
    * process somewhere. While the `app_files` property ensures all
