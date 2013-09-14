@@ -73,8 +73,6 @@ At a high level, the structure looks roughly like this:
 
 ```
 ng-boilerplate/
-  |- build/
-  |  |- angular/
   |- grunt-tasks/
   |- karma/
   |- src/
@@ -103,8 +101,6 @@ What follows is a brief description of each entry, but most directories contain
 their own `README.md` file with additional documentation, so browse around to
 learn more.
 
-- `build/` - files needed to make everything happen, but *not* libraries our
-  application uses. [Read more &raquo;](build/README.md)
 - `karma/` - test configuration.
 - `src/` - our application sources. [Read more &raquo;](src/README.md)
 - `vendor/` - third-party libraries. [Bower](http://bower.io) will install
