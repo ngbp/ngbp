@@ -16,14 +16,16 @@
     <meta property="og:image" content="https://a248.e.akamai.net/assets.github.com/images/modules/logos_page/Octocat.png?1366128846" />
     <meta property="og:description" content="Non-Trivial AngularJS Made Easy: Everything you need to kickstart AngularJS projects: a best-practice directory structure, an intelligent build system, and the best web design libraries around.">
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <!-- font awesome from BootstrapCDN -->
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
     <!-- compiled CSS -->
-    <link rel="stylesheet" type="text/css" href="assets/ng-boilerplate-0.3.1.css" />
+    <link rel="stylesheet" type="text/css" href="assets/ngbp-0.3.2.css" />
 
     <!-- compiled JavaScript -->
-    <script type="text/javascript" src="assets/ng-boilerplate-0.3.1.js"></script>
+    <script type="text/javascript" src="assets/ngbp-0.3.2.js"></script>
 
     <!-- it's stupid to have to load it here, but this is for the +1 button -->
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js">
@@ -32,46 +34,57 @@
   </head>
   <body>
     <div class="container">
-      <div class="masthead">
-        <h3 class="muted">ng-boilerplate <small><a
-              href="http://github.com/joshdmiller/ng-boilerplate/blob/master/CHANGELOG.md">v0.3.1</a></small></h3>
-        <div class="navbar">
-          <div class="navbar-inner">
-            <div class="container">
-              <ul class="nav">
-                <li ui-route="/home" ng-class="{active:$uiRoute}">
-                  <a href="#/home">
-                    <i class="icon-home"></i>
-                    Home
-                  </a>
-                </li>
-                <li ui-route="/about" ng-class="{active:$uiRoute}">
-                  <a href="#/about">
-                    <i class="icon-info-sign"></i>
-                    What is it?
-                  </a>
-                </li>
-                <li>
-                  <a href="https://github.com/joshdmiller/ng-boilerplate#readme">
-                    <i class="icon-book"></i>
-                    Read the Docs
-                  </a>
-                </li>
-                <li>
-                  <a href="https://github.com/joshdmiller/ng-boilerplate">
-                    <i class="icon-github-alt"></i>
-                    Github
-                  </a>
-                </li>
-                <li>
-                  <a href="https://github.com/joshdmiller/ng-boilerplate/issues">
-                    <i class="icon-comments"></i>
-                    Support
-                  </a>
-                </li>
-              </ul>
-            </div>
+      <div class="navbar navbar-default">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" ng-init="menuCollapsed = true"
+            ng-click="menuCollapsed = ! menuCollapsed">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="navbar-brand">
+            ngbp
+            <small>
+              <a href="http://github.com/ngbp/ngbp/blob/v0.3.2-release/CHANGELOG.md">
+                v0.3.2
+              </a>
+            </small>
           </div>
+        </div>
+        <div class="collapse navbar-collapse" collapse="menuCollapsed">
+          <ul class="nav navbar-nav">
+            <li ui-sref-active="active">
+              <a href ui-sref="home">
+                <i class="fa fa-home"></i>
+                Home
+              </a>
+            </li>
+            <li ui-sref-active="active">
+              <a href ui-sref="about">
+                <i class="fa fa-info-circle"></i>
+                What is it?
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/joshdmiller/ng-boilerplate#readme">
+                <i class="fa fa-book"></i>
+                Read the Docs
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/joshdmiller/ng-boilerplate">
+                <i class="fa fa-github-alt"></i>
+                Github
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/joshdmiller/ng-boilerplate/issues">
+                <i class="fa fa-comments"></i>
+                Support
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -82,10 +95,10 @@
       <div class="container">
         <div class="footer-inner">
           <ul class="social">
-            <li><a target="_blank" href="http://gplus.to/joshdmiller"><i class="icon-google-plus-sign"></i></a></li>
-            <li><a target="_blank" href="http://twitter.com/joshdmiller"><i class="icon-twitter-sign"></i></a></li>
-            <li><a target="_blank" href="http://linkedin.com/in/joshdmiller"><i class="icon-linkedin-sign"></i></a></li>
-            <li><a target="_blank" href="http://github.com/joshdmiller/ng-boilerplate"><i class="icon-github-sign"></i></a></li>
+            <li><a target="_blank" href="http://gplus.to/joshdmiller"><i class="fa fa-google-plus-sign"></i></a></li>
+            <li><a target="_blank" href="http://twitter.com/joshdmiller"><i class="fa fa-twitter-sign"></i></a></li>
+            <li><a target="_blank" href="http://linkedin.com/in/joshdmiller"><i class="fa fa-linkedin-sign"></i></a></li>
+            <li><a target="_blank" href="http://github.com/joshdmiller/ng-boilerplate"><i class="fa fa-github-sign"></i></a></li>
           </ul>
           
 
