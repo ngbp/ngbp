@@ -471,7 +471,7 @@ module.exports = function ( grunt ) {
         files: [ 
           'src/assets/**/*'
         ],
-        tasks: [ 'copy:build_app_assets' ]
+        tasks: [ 'copy:build_app_assets', 'copy:build_vendor_assets' ]
       },
 
       /**
