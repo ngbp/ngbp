@@ -1,16 +1,16 @@
 {
   "author": "Josh David Miller",
-  "name": "ng-boilerplate",
+  "name": "ngbp",
   "version": "0.3.1",
-  "homepage": "http://bit.ly/ng-boilerplate",
+  "homepage": "https://github.com/ngbp/ngbp",
   "licenses": {
     "type": "MIT",
-    "url": "https://raw.github.com/joshdmiller/ng-boilerplate/master/LICENSE"
+    "url": "https://raw.github.com/ngbp/ngbp/master/LICENSE"
   },
-  "bugs": "https://github.com/joshdmiller/ng-boilerplate/issues",
+  "bugs": "https://github.com/ngbp/ngbp/issues",
   "repository": {
     "type": "git",
-    "url": "git@github.com:joshdmiller/ng-boilerplate.git"
+    "url": "git@github.com:ngbp/ngbp.git"
   },
   "dependencies": {},
   "devDependencies": {

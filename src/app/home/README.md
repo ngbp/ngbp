@@ -33,7 +33,7 @@ specified, as shown below.
 
 ```js
 angular.module( 'ngBoilerplate.home', [
-  'ui.state',
+  'ui.router',
   'titleService',
   'plusOne'
 ])
