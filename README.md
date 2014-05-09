@@ -1,23 +1,25 @@
-# [ngBoilerplate](http://joshdmiller.github.com/ng-boilerplate) [![Build Status](https://api.travis-ci.org/ngbp/ngbp.png?branch=v0.3.2-release)](https://travis-ci.org/ngbp/ngbp)
+# [ngBoilerplate](http://joshdmiller.github.com/ng-boilerplate) [![Build
+Status](https://api.travis-ci.org/ngbp/ngbp.png?branch=warlock)](https://travis-ci.org/ngbp/ngbp)
 
-An opinionated kickstarter for [AngularJS](http://angularjs.org) projects.
+An opinionated kickstarter for [AngularJS](http://angularjs.org) projects that uses the
+[Warlock][warlock] build engine.
 
-***
+~~~
 
 ## Quick Start
 
-Install Node.js and then:
+Install [Node.js](http://nodejs.org) and then:
 
 ```sh
-$ git clone git://github.com/joshdmiller/ng-boilerplate
-$ cd ng-boilerplate
-$ sudo npm -g install grunt-cli karma bower
+$ git clone git://github.com/ngbp/ngbp
+$ cd ngbp
+$ sudo npm -g install warlock-cli bower
 $ npm install
 $ bower install
-$ grunt watch
+$ warlock
 ```
 
-Finally, open `file:///path/to/ng-boilerplate/build/index.html` in your browser.
+Finally, open `file:///path/to/ngbp/build/index.html` in your browser.
 
 Happy hacking!
 
@@ -30,10 +32,9 @@ ngBoilerplate also comes prepackaged with the most popular design frameworks
 around: [Twitter Bootstrap](http://getbootstrap.com),
 [Angular UI](http://angular-ui.github.io),
 [Angular Bootstrap](http://angular-ui.github.io/bootstrap),
-[Font Awesome](http://fortawesome.github.com/Font-Awesome), and
-[LESS](http://lesscss.org). Lastly, it contains a sophisticated
-[Grunt](http://gruntjs.org)-based build system to ensure maximum productivity.
-All you have to do is clone it and start coding!
+[Font Awesome](http://fortawesome.github.com/Font-Awesome), and [LESS](http://lesscss.org). Lastly,
+it uses the sophisticated build system [Warlock][warlock] to ensure maximum productivity. All you
+have to do is clone it and start coding!
 
 ## Philosophy
 
@@ -66,6 +67,8 @@ and authentication and authorization, then take a look at
 that - and does it well.
 
 ## Learn
+
+**This section is outdated.**
 
 ### Overall Directory Structure
 
@@ -342,38 +345,29 @@ Boom!
 
 ## Roadmap
 
-This is a project that is not broad in scope, so there's not really much of a
-wish list here. But I would like to see a couple of things:
+This is a project that is not broad in scope, so there's not really much of a wish list here. But I
+would like to see a couple of things:
 
-I'd like it to be a little simpler. I want this to be a universal starting
-point. If someone is starting a new AngularJS project, she should be able to
-clone, merge, or download its source and immediately start doing what she needs
-without renaming a bunch of files and methods or deleting spare parts. What I
-have works for a first release, but I just think there is a little too much here
+I'd like it to be a little simpler. I want this to be a universal starting point. If someone is
+starting a new AngularJS project, she should be able to clone, merge, or download its source and
+immediately start doing what she needs without renaming a bunch of files and methods or deleting
+spare parts. What I have works for a first release, but I just think there is a little too much here
 right now.
 
-I'd also like to see a simple generator. Nothing like Yeoman, as there already
-is one of those, but just something that allows the user to say "I want
-Bootstrap but not Font Awesome and my app is called 'coolApp'. Gimme." Perhaps a
-custom download builder like UI Bootstrap has. Like that. Then again, perhaps
-some Yeoman generators wouldn't be out of line. I don't know. What do you think?
-
-Naturally, I am open to all manner of ideas and suggestions. See the
-"Contributing" section below.
+Naturally, I am open to all manner of ideas and suggestions. See the "Contributing" section below.
 
 ### To Do
 
-See the [issues list](http://github.com/joshdmiller/ng-boilerplate/issues). And
-feel free to submit your own!
+See the [issues list](http://github.com/ngbp/ngbp/issues). And feel free to submit your own!
 
 ### Contributing
 
-This is an opinionated kickstarter, but the opinions are fluid and
-evidence-based. Don't like the way I did something? Think you know of a better
-way? Have an idea to make this more useful? Let me know! You can contact me
-through all the usual channels or you can open an issue on the GitHub page. If
-you're feeling ambitious, you can even submit a pull request - how thoughtful
-of you!
+This is an opinionated kickstarter, but the opinions are fluid and evidence-based. Don't like the
+way I did something? Think you know of a better way? Have an idea to make this more useful? Let me
+know! You can contact me through all the usual channels or you can open an issue on the GitHub page.
+If you're feeling ambitious, you can even submit a pull request - how thoughtful of you!
 
 So join the team! We're good people.
+
+[warlock]: http://getwarlock.com
 

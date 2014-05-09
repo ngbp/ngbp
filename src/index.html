@@ -21,11 +21,9 @@
     <!-- font awesome from BootstrapCDN -->
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
-    <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
-    <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
-
-    <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
-    <script type="text/javascript" src="<%= file %>"></script><% }); %>
+    <!-- styles -->
+    <% webappStyles.forEach( function ( style ) {%>
+    <link rel="stylesheet" href="<%= warlock.file.relativePath( warlock.file.dirname(filepath), style ) %>"><%});%>
 
     <!-- it's stupid to have to load it here, but this is for the +1 button -->
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js">
@@ -46,8 +44,8 @@
           <div class="navbar-brand">
             ngbp
             <small>
-              <a href="http://github.com/ngbp/ngbp/blob/v<%= version %>-release/CHANGELOG.md">
-                v<%= version %>
+              <a href="http://github.com/ngbp/ngbp/blob/v<%= warlock.config('pkg.version') %>-release/CHANGELOG.md">
+                v<%= warlock.config("pkg.version") %>
               </a>
             </small>
           </div>
@@ -117,5 +115,10 @@
         </div>
       </div>
     </footer>
+
+    <!-- scripts -->
+    <% webappScripts.forEach( function ( script ) {%>
+    <script type="text/javascript" src="<%= warlock.file.relativePath( warlock.file.dirname(filepath), script ) %>">
+    </script><%});%>
   </body>
 </html>

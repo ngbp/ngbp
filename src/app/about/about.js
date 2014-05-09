@@ -10,7 +10,7 @@ angular.module( 'ngBoilerplate.about', [
     views: {
       "main": {
         controller: 'AboutCtrl',
-        templateUrl: 'about/about.tpl.html'
+        templateUrl: '@tpl/about/about.tpl.html'
       }
     },
     data:{ pageTitle: 'What is It?' }
