@@ -6,7 +6,17 @@
         "vendor/angular-bootstrap/ui-bootstrap-tpls.min.js",
         "vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js",
         "vendor/angular-ui-router/release/angular-ui-router.js"
+      ],
+      "test": [
+        "vendor/angular-mocks/angular-mocks.js"
       ]
+    }
+  },
+  "tasks": {
+    "karma": {
+      "single-run": {
+        "configFile": "karma.conf.js"
+      }
     }
   }
 }

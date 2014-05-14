@@ -13,7 +13,9 @@
     "url": "git@github.com:ngbp/ngbp.git"
   },
   "devDependencies": {
+    "warlock-engine": "^1.0.0-alpha.1",
     "warlock-spell-angular": "~1.0",
+    "warlock-spell-karma": "~1.0",
     "warlock-spell-less": "~1.0"
   }
 }
