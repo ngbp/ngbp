@@ -375,5 +375,6 @@ through all the usual channels or you can open an issue on the GitHub page. If
 you're feeling ambitious, you can even submit a pull request - how thoughtful
 of you!
 
-So join the team! We're good people.
+Make sure to check out the [Contributing Guide](./CONTRIBUTING.md).
 
+So join the team! We're good people.
