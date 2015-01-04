@@ -17,5 +17,5 @@ All pull requests must follow a few simple guidelines:
   `type(component): short message` and be absolutely no longer than 100
   characters in length. 80 characters or less is preferable.
 
-This style is very similar to those for AngularJS, so check out their
-contributing guide.
+This style is very similar to those for AngularJS, so check out [their
+contributing guide](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md).
