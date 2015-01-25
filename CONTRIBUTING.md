@@ -19,3 +19,8 @@ All pull requests must follow a few simple guidelines:
 
 This style is very similar to those for AngularJS, so check out [their
 contributing guide](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md).
+
+## Notes
+
+- Please keep `package.json` package list in alphabetical order. Using
+`npm install --save-dev` automatically does this.
